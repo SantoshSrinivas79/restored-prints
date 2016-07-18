@@ -14,10 +14,35 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li>
-            <a href="/search">Search</a>
+          <li role="presentation" class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+              Wildlife <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="/search?tag=birds">Birds</a></li>
+              <li><a href="/search?tag=mammals">Mammals</a></li>
+              <li><a href="/search?tag=reptiles">Reptiles</a></li>
+              <li><a href="/search?tag=fish">Fish</a></li>
+              <li><a href="/search?tag=flora">Flora</a></li>
+              <li><a href="/search?tag=fungi">Fungi</a></li>
+            </ul>
+          </li>
+          <li role="presentation" class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+              Art <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="/search?tag=american">American</a></li>
+              <li><a href="/search?tag=european">European</a></li>
+            </ul>
           </li>
         </ul>
+        <form class="navbar-form navbar-right" role="search">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+          </div>
+          <button type="submit" class="btn">Submit</button>
+        </form>
       </div>
     </div>
   </nav>
