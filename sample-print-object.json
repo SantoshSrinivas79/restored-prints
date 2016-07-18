@@ -1,0 +1,45 @@
+{
+  "prints": [
+    {
+      "id": "JGD022",
+      "title":  "Kingfisher",
+      "latin_title_historic": "Alcedo isipda, Linn.",
+      "latin_title_modern": "Alcedo atthis",
+      "publication": "#birds-of-europe",
+      "lithograph_by": ["John Gould", "Elizabeth Gould"],
+      "painting_by": ["John Gould", "Elizabeth Gould"],
+      "prices": [
+        {
+          "title": "A3+",
+          "inches": "19x13",
+          "mms": "483x330",
+          "price": 45.00
+        }
+      ]
+    }
+  ],
+  "publications": [
+    {
+      "id": "#birds-of-europe",
+      "title": "The Birds of Europe",
+      "author": ["John Gould"],
+      "first_published": 1817,
+      "last_published": 1837
+    }
+  ],
+  "orders": [
+    {
+      "id": "ORD1029318",
+      "paypal_order_id": "PAYPAL1234",
+      "order_status": 0,
+      "shipping_address": {
+        "address_1": "16 The Beeches",
+        "address_2": "Fetcham",
+        "town": "Leatherhead",
+        "county": "Surrey",
+        "country": "United Kingdom",
+        "postcode": "KT22 9DT"
+      }
+    }
+  ]
+}

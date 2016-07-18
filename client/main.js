@@ -1,22 +1,27 @@
-import { Template } from 'meteor/templating';
-import { ReactiveVar } from 'meteor/reactive-var';
+import { Prints } from '../imports/models/prints';
 
-import './main.html';
+import '../imports/pages/layout';
+import '../imports/pages/home/home';
+import '../imports/pages/search/search';
+import '../imports/pages/print/print';
+import './styles/main.less';
 
-Template.hello.onCreated(function helloOnCreated() {
-  // counter starts at 0
-  this.counter = new ReactiveVar(0);
+Router.configure({
+  layoutTemplate: 'layout'
 });
 
-Template.hello.helpers({
-  counter() {
-    return Template.instance().counter.get();
-  },
+Router.route('/', function () {
+  this.render('home');
 });
 
-Template.hello.events({
-  'click button'(event, instance) {
-    // increment the counter when button is clicked
-    instance.counter.set(instance.counter.get() + 1);
-  },
+Router.route('/search', function () {
+  this.render('search');
+});
+
+Router.route('/print/:id', function () {
+  this.render('print', {
+    data: function() {
+      return Prints.find({id: this.id});
+    }
+  });
 });
