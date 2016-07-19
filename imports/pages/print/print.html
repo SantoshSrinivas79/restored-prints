@@ -1,19 +1,30 @@
 <template name="print">
   <div class="row">
-    {{> print_info}}
-
-    <div class="col-md-9">
-      <div class="thumbnail">
-        <img class="img-responsive" src="http://placehold.it/800x300" alt="">
-        <div class="caption-full">
-          <h4 class="pull-right">$24.99</h4>
-          <h4><a href="#">{{title}}</a></h4>
-
-          {{#if description}}
-          <p>{{description}}</p>
-          {{/if}}
+    {{#if Template.subscriptionsReady}}
+      {{#with print_obj}}
+      <div class="col-md-3">
+        <p class="lead">Shop Name</p>
+        <div class="list-group">
+          <a href="#" class="list-group-item active">Category 1</a>
+          <a href="#" class="list-group-item">Category 2</a>
+          <a href="#" class="list-group-item">Category 3</a>
         </div>
       </div>
-    </div>
+
+      <div class="col-md-9">
+        <div class="thumbnail">
+          <img class="img-responsive" src="http://placehold.it/800x300" alt="">
+          <div class="caption-full">
+            <h4 class="pull-right">$24.99</h4>
+            <h4><a href="#">{{title}}</a></h4>
+
+            {{#if description}}
+            <p>{{description}}</p>
+            {{/if}}
+          </div>
+        </div>
+      </div>
+      {{/with}}
+    {{/if}}
   </div>
 </template>

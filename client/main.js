@@ -1,5 +1,3 @@
-import {Prints} from '../imports/models/prints';
-
 import '../imports/pages/layout';
 import '../imports/pages/home/home';
 import '../imports/pages/search/search';
@@ -7,26 +5,33 @@ import '../imports/pages/print/print';
 import '../imports/pages/404/404';
 import './styles/main.less';
 
-Router.configure({
-  layoutTemplate: 'layout'
+FlowRouter.route('/', {
+  name: 'home',
+  action: function() {
+    BlazeLayout.render('layout', { main: "home" });
+  }
 });
 
-Router.route('/', function () {
-  this.render('home');
+FlowRouter.route('/search/:query', {
+  name: 'search',
+  subscriptions: function(params) {
+    this.register('search_results', Meteor.subscribe('print_search', params.query));
+  },
+  action: function() {
+    BlazeLayout.render('layout', { main: "search" });
+  }
 });
 
-Router.route('/search', function () {
-  this.render('search');
+FlowRouter.route('/print/:id', {
+  name: 'print',
+  subscriptions: function(params) {
+    this.register('print', Meteor.subscribe('print_by_id', params.id));
+  },
+  action: function() {
+    BlazeLayout.render('layout', { main: "print" });
+  }
 });
 
-Router.route('/print/:_id', function () {
-  this.render('print', {
-    data: function () {
-      return Prints.findOne({id: this.params._id})
-    }
-  });
-});
-
-Router.route('/404', function () {
-  this.render('404');
-});
+// FlowRouter.route('/404', function () {
+//   this.render('404');
+// });

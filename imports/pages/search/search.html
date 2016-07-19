@@ -1,16 +1,24 @@
 <template name="search">
   <h2>Prints</h2>
-  <p>{{search_result_count}} results found</p>
 
-  <div class="row">
-    {{> search_refinement}}
+  {{#if Template.subscriptionsReady}}
+    <div class="row">
+      <div class="col-md-3">
+        <div class="list-group">
+          <a href="#" class="list-group-item">Category 1</a>
+          <a href="#" class="list-group-item">Category 2</a>
+          <a href="#" class="list-group-item">Category 3</a>
+        </div>
+        <p>{{search_result_count}} results found</p>
+      </div>
 
-    <div class="col-md-9">
-      <div class="row">
-        {{#each search_results}}
-          {{> search_print}}
-        {{/each}}
+      <div class="col-md-9">
+        <div class="row">
+          {{#each search_results}}
+            {{> search_print}}
+          {{/each}}
+        </div>
       </div>
     </div>
-  </div>
+  {{/if}}
 </template>
