@@ -1,22 +1,20 @@
 <template name="navbar">
   <ul id="wildlife_dd" class="dropdown-content">
-    <li><a href="/search/birds">Birds</a></li>
-    <li><a href="/search/mammals">Mammals</a></li>
-    <li><a href="/search/reptiles">Reptiles</a></li>
-    <li><a href="/search/fish">Fish</a></li>
-    <li><a href="/search/flora">Flora</a></li>
-    <li><a href="/search/fungi">Fungi</a></li>
+    {{#each category_wildlife}}
+      <li><a href="{{path}}">{{title}}</a></li>
+    {{/each}}
   </ul>
 
   <ul id="art_dd" class="dropdown-content">
-    <li><a href="/search/american">American</a></li>
-    <li><a href="/search/european">European</a></li>
+    {{#each category_art}}
+      <li><a href="{{path}}">{{title}}</a></li>
+    {{/each}}
   </ul>
 
   <nav>
     <div class="container">
       <div class="nav-wrapper">
-        <ul id="nav-mobile" class="hide-on-med-and-down">
+        <ul id="nav-mobile" class="hide-on-small-and-down">
           <li><a href="/">Restored Prints</a></li>
           <li><a class="dropdown-button" href="#!" data-activates="wildlife_dd">Wildlife<i class="material-icons right">arrow_drop_down</i></a></li>
           <li><a class="dropdown-button" href="#!" data-activates="art_dd">Art<i class="material-icons right">arrow_drop_down</i></a></li>

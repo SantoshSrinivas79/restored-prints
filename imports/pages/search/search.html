@@ -7,16 +7,19 @@
 
   {{#if Template.subscriptionsReady}}
     <div class="row">
-      <div class="col m3">
+      <div class="col s12 l3">
         {{> search_refinement}}
-        <p>{{search_result_count}} results found</p>
+        <p class="hide-on-med-and-down">{{search_result_count}} results found</p>
       </div>
 
-      <div class="col m9">
+      <div class="col s12 l9">
         {{#each search_results}}
           {{> search_row}}
         {{/each}}
       </div>
+    </div>
+    <div class="row center show-on-med-and-down-only">
+      {{> search_pagination}}
     </div>
   {{else}}
     {{> preloader}}
@@ -68,4 +71,16 @@
       </div>
     </form>
   </div>
+</template>
+
+<template name="search_pagination">
+  <ul class="pagination">
+    <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+    <li class="active"><a href="#!">1</a></li>
+    <li class="waves-effect"><a href="#!">2</a></li>
+    <li class="waves-effect"><a href="#!">3</a></li>
+    <li class="waves-effect"><a href="#!">4</a></li>
+    <li class="waves-effect"><a href="#!">5</a></li>
+    <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+  </ul>
 </template>

@@ -5,6 +5,10 @@ import '../imports/pages/print/print';
 import '../imports/pages/404/404';
 import './main.less';
 
+FlowRouter.subscriptions = function() {
+  this.register('categories', Meteor.subscribe('categories'));
+};
+
 FlowRouter.route('/', {
   name: 'home',
   action: function() {
@@ -12,10 +16,10 @@ FlowRouter.route('/', {
   }
 });
 
-FlowRouter.route('/search/:query', {
+FlowRouter.route('/search', {
   name: 'search',
-  subscriptions: function(params) {
-    this.register('search_results', Meteor.subscribe('print_search', params.query));
+  subscriptions: function(params, queryParams) {
+    this.register('search_results', Meteor.subscribe('print_search', queryParams.c));
     this.register('search_publications', Meteor.subscribe('publications'));
   },
   action: function() {

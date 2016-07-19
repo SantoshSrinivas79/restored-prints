@@ -1,11 +1,11 @@
 import './search_print.html';
 
 Template.search_print.helpers({
-  path: function() {
+  path() {
     var result = this;
     return FlowRouter.path('print', {id: result.id});
   },
-  price_from: function() {
+  price_from() {
     if(this.prices.length === 1) {
       return this.prices[0].price;
     } else {
@@ -13,7 +13,7 @@ Template.search_print.helpers({
     }
 
   },
-  truncate: function(string, length) {
+  truncate(string, length) {
     return string.substring(0, length) + '...';
   }
 });
