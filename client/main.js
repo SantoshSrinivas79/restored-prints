@@ -5,6 +5,8 @@ import '../imports/pages/print/print';
 import '../imports/pages/404/404';
 import './main.less';
 
+import '../admin/main';
+
 FlowRouter.subscriptions = function() {
   this.register('categories', Meteor.subscribe('categories'));
 };
