@@ -1,24 +1,71 @@
 <template name="search">
-  <h2>Prints</h2>
+  <div class="row" style="margin-bottom: 0; margin-top: 20px;">
+    <div class="col s12">
+      {{> search_input}}
+    </div>
+  </div>
 
   {{#if Template.subscriptionsReady}}
     <div class="row">
-      <div class="col-md-3">
-        <div class="list-group">
-          <a href="#" class="list-group-item">Category 1</a>
-          <a href="#" class="list-group-item">Category 2</a>
-          <a href="#" class="list-group-item">Category 3</a>
-        </div>
+      <div class="col m3">
+        {{> search_refinement}}
         <p>{{search_result_count}} results found</p>
       </div>
 
-      <div class="col-md-9">
-        <div class="row">
-          {{#each search_results}}
-            {{> search_print}}
-          {{/each}}
-        </div>
+      <div class="col m9">
+        {{#each search_results}}
+          {{> search_row}}
+        {{/each}}
       </div>
     </div>
+  {{else}}
+    {{> preloader}}
   {{/if}}
+</template>
+
+<template name="search_row">
+  <div class="row">
+    {{#each row}}
+      <div class="col s12 m4">
+        {{> search_print}}
+      </div>
+    {{/each}}
+  </div>
+</template>
+
+<template name="search_refinement">
+  <form>
+    <ul id="search_refinement" class="collapsible collapsible-accordion" data-collapsible="accordion">
+      <li>
+        <div class="collapsible-header">Author</div>
+        <div class="collapsible-body">
+          {{#each publications}}
+            <p>
+              <input type="checkbox" class="filled-in" id="filled-in-box" />
+              <label for="filled-in-box">{{title}}</label>
+            </p>
+          {{/each}}
+        </div>
+      </li>
+      <li>
+        <div class="collapsible-header">Painter</div>
+        <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+      </li>
+      <li>
+        <div class="collapsible-header">Publication</div>
+        <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+      </li>
+    </ul>
+  </form>
+</template>
+
+<template name="search_input">
+  <div class="card">
+    <form>
+      <div class="input-field">
+        <input id="search" type="search" name="query" placeholder="Search">
+        <label for="search"><i class="material-icons">search</i></label>
+      </div>
+    </form>
+  </div>
 </template>

@@ -1,2 +1,7 @@
 import './navbar.html';
-import '../search_bar/search_bar';
+
+Template.navbar.onRendered(function() {
+  this.autorun(() => {
+    $(".dropdown-button").dropdown();
+  });
+});

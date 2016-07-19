@@ -3,7 +3,7 @@ import '../imports/pages/home/home';
 import '../imports/pages/search/search';
 import '../imports/pages/print/print';
 import '../imports/pages/404/404';
-import './styles/main.less';
+import './main.less';
 
 FlowRouter.route('/', {
   name: 'home',
@@ -16,6 +16,7 @@ FlowRouter.route('/search/:query', {
   name: 'search',
   subscriptions: function(params) {
     this.register('search_results', Meteor.subscribe('print_search', params.query));
+    this.register('search_publications', Meteor.subscribe('publications'));
   },
   action: function() {
     BlazeLayout.render('layout', { main: "search" });

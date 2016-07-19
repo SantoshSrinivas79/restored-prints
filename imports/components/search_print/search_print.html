@@ -1,23 +1,16 @@
 <template name="search_print">
-  <div class="col-sm-4 col-lg-4 col-md-4">
-    <div class="thumbnail">
-      <img src="http://placehold.it/320x320" alt="">
-      <div class="caption">
-        <h4 class="pull-right">{{price_from}}</h4>
-        <h4><a href="{{path}}">{{title}}</a>
-        </h4>
+  <div class="card medium">
+    <a href="#">
+      <div class="card-image">
+        <img src="http://placehold.it/320x320">
+        <span class="card-title">{{title}}</span>
+      </div>
+      <div class="card-content">
         <p>{{truncate description 100}}</p>
       </div>
-      <!--<div class="ratings">-->
-        <!--<p class="pull-right">15 reviews</p>-->
-        <!--<p>-->
-          <!--<span class="glyphicon glyphicon-star"></span>-->
-          <!--<span class="glyphicon glyphicon-star"></span>-->
-          <!--<span class="glyphicon glyphicon-star"></span>-->
-          <!--<span class="glyphicon glyphicon-star"></span>-->
-          <!--<span class="glyphicon glyphicon-star"></span>-->
-        <!--</p>-->
-      <!--</div>-->
-    </div>
+      <div class="card-action">
+        <a href="#" class="right">{{price_from}}</a>
+      </div>
+    </a>
   </div>
 </template>

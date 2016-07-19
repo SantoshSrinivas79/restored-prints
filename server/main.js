@@ -3,11 +3,10 @@ import { Prints } from '../imports/models/prints';
 import { Publications } from '../imports/models/publications';
 
 Meteor.startup(() => {
-  Prints.remove({});
+  // Prints.remove({});
   Publications.remove({});
 
-  var print_search_index = 'whatever_you_want_to_call_it_less_than_128_characters';
-  // Prints._dropIndex(print_search_index);
+
   Prints._ensureIndex({
     id: 'text',
     title: 'text',
@@ -78,6 +77,4 @@ Meteor.startup(() => {
     first_published: 1817,
     last_published: 1837
   });
-
-  // code to run on server at startup
 });
