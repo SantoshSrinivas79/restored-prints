@@ -3,7 +3,7 @@ import './search_print.html';
 Template.search_print.helpers({
   path() {
     var result = this;
-    return FlowRouter.path('print', {id: result.id});
+    return FlowRouter.path('print', {ref: result.ref});
   },
   price_from() {
     if(this.prices.length === 1) {

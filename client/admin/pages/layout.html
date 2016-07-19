@@ -1,0 +1,23 @@
+<template name="admin_layout">
+  <head>
+    <title>restored-prints</title>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        {{> admin_navbar}}
+      </div>
+
+      <div class="row">
+        <div class="col s3">
+          {{> admin_sidenav}}
+        </div>
+        <div class="col s9">
+          {{> Template.dynamic template=main}}
+        </div>
+      </div>
+    </div>
+  </body>
+</template>

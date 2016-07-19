@@ -5,7 +5,7 @@ import '../imports/pages/print/print';
 import '../imports/pages/404/404';
 import './main.less';
 
-import '../admin/main';
+import './admin/admin';
 
 FlowRouter.subscriptions = function() {
   this.register('categories', Meteor.subscribe('categories'));
@@ -29,10 +29,10 @@ FlowRouter.route('/search', {
   }
 });
 
-FlowRouter.route('/print/:id', {
+FlowRouter.route('/print/:ref', {
   name: 'print',
   subscriptions: function(params) {
-    this.register('print', Meteor.subscribe('print_by_id', params.id));
+    this.register('print', Meteor.subscribe('print_by_ref', params.ref));
   },
   action: function() {
     BlazeLayout.render('layout', { main: "print" });

@@ -24,7 +24,7 @@ Meteor.startup(() => {
 
   for(var i = 0; i < 9; i++) {
     Prints.insert({
-      id: 'JGD022',
+      ref: 'JGD022',
       title:  'Kingfisher',
       latin_title_historic: 'Alcedo isipda, Linn.',
       latin_title_modern: 'Alcedo atthis',
