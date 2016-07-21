@@ -1,11 +1,13 @@
 <template name="admin_prints_list">
   <div class="row">
-    {{> breadcrumb}}
-  </div>
-  <div class="row">
-    <div class="card">
-      <div class="card-content">
-        {{> reactiveTable settings=settings}}
+    <div class="col s12">
+      <div class="card">
+        <div class="card-title">
+          {{> breadcrumb}}
+        </div>
+        <div class="card-content">
+          {{> reactiveTable settings=settings}}
+        </div>
       </div>
     </div>
   </div>
@@ -28,8 +30,8 @@
 <template name="admin_prints_list_published">
   <form>
     <p class="center">
-      <input type="checkbox" class="filled-in checkbox" id="is_published" {{is_published}} />
-      <label for="is_published"></label>
+      <input type="checkbox" class="filled-in checkbox" id="is_published_{{ref}}" {{is_published}} />
+      <label for="is_published_{{ref}}"></label>
     </p>
   </form>
 </template>

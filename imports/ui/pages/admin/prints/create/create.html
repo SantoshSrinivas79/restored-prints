@@ -1,29 +1,88 @@
 <template name="admin_prints_create">
   <div class="row">
-    {{> breadcrumb}}
+    <form id="admin_prints_create">
+      <div class="col s7">
+        {{> admin_prints_create_form}}
+      </div>
+      <div class="col s5">
+        <div class="row">
+          {{> admin_prints_create_filepicker}}
+        </div>
+        <div class="row">
+          {{> admin_prints_create_prices}}
+        </div>
+      </div>
+    </form>
   </div>
-  <div class="row">
-    <form id="admin_prints_create" class="col s12 card">
+</template>
+
+<template name="admin_prints_create_form">
+  <div class="card">
+    <div class="card-title">
+      {{> breadcrumb}}
+    </div>
+    <div class="card-content">
       <div class="row">
         <div class="input-field col s3">
-          <input id="first_name" type="text" class="validate" name="ref" required>
-          <label for="first_name">Ref</label>
+          <input id="ref" type="text" class="validate" name="ref" required>
+          <label for="ref">Ref</label>
         </div>
         <div class="input-field col s9">
-          <input id="last_name" type="text" class="validate" name="title" required>
-          <label for="last_name">Title</label>
+          <input id="title" type="text" class="validate" name="title" required>
+          <label for="title">Title</label>
         </div>
       </div>
       <div class="row">
-        <div class="input-field col s12">
-          <input id="password" type="password" class="validate">
-          <label for="password">Password</label>
+        <div class="input-field col s6">
+          <input id="latin_title_modern" type="text" class="validate" name="latin_title_modern">
+          <label for="latin_title_modern">Latin Name</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="latin_title_historic" type="text" class="validate" name="latin_title_historic">
+          <label for="latin_title_historic">Historic Latin Name</label>
         </div>
       </div>
+
       <div class="row">
         <div class="input-field col s12">
-          <input id="email" type="email" class="validate">
-          <label for="email">Email</label>
+          <select required>
+            <option value="" disabled selected>Choose Publication</option>
+            {{#each publications}}
+              <option value="{{title}}">{{title}}</option>
+            {{/each}}
+          </select>
+          <label>Publication</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <select name="lithograph_by" multiple>
+            <option value="" disabled selected>Choose Artists</option>
+            {{#each artists}}
+              <option value="{{title}}">{{title}}</option>
+            {{/each}}
+          </select>
+          <label>Lithograph Artists</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <select name="painting_by" multiple>
+            <option value="" disabled selected>Choose Artists</option>
+            {{#each artists}}
+              <option value="{{title}}">{{title}}</option>
+            {{/each}}
+          </select>
+          <label>Painting Artists</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <textarea id="textarea1" name="description" class="materialize-textarea"></textarea>
+          <label for="textarea1">Description</label>
         </div>
       </div>
       <div class="row">
@@ -33,6 +92,71 @@
           </button>
         </div>
       </div>
-    </form>
+    </div>
+  </div>
+</template>
+
+<template name="admin_prints_create_filepicker">
+  <div class="card">
+    <div class="card-title">
+      <nav>
+        <div class="nav-wrapper teal">
+          <div class="col s12">
+            <span class="breadcrumb">File Picker</span>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div class="card-content">
+      <div class="file-field input-field">
+        <div class="btn">
+          <span>File</span>
+          <input type="file">
+        </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text">
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="admin_prints_create_prices">
+  <div class="card">
+    <div class="card-title">
+      <nav>
+        <div class="nav-wrapper teal">
+          <div class="col s12">
+            <span class="breadcrumb">Prices</span>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div class="card-content">
+      {{#each price_rows}}
+      <div class="row">
+        <div class="input-field col s3">
+          <input id="mmx" type="text" class="validate" name="mmx" required>
+          <label for="mmx">X</label>
+        </div>
+        <div class="input-field col s3">
+          <input id="mmy" type="text" class="validate" name="mmy" required>
+          <label for="mmy">Y</label>
+        </div>
+        <div class="input-field col s4">
+          <input id="price" type="text" class="validate" name="price" required>
+          <label for="price">Price</label>
+        </div>
+        <div class="input-field col s1">
+          <i class="material-icons close">close</i>
+        </div>
+      </div>
+      {{/each}}
+      <div class="row">
+        <div class="input-field col s4">
+          <a class="add_price" href="#">+ Add price</a>
+        </div>
+      </div>
+    </div>
   </div>
 </template>

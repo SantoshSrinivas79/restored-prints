@@ -1,5 +1,23 @@
 import './create.html';
 
+import { Publications } from '../../../../../collections/publications/model';
+import { Artists } from '../../../../../collections/artists/model';
+
+Template.admin_prints_create_form.onRendered(function() {
+  this.autorun(() => {
+    $('select').material_select();
+  });
+});
+
+Template.admin_prints_create_form.helpers({
+  publications() {
+    return Publications.find({});
+  },
+  artists() {
+    return Artists.find({});
+  }
+});
+
 Template.admin_prints_create.events({
   'submit #admin_prints_create'(event) {
     event.preventDefault();
@@ -27,5 +45,28 @@ Template.admin_prints_create.events({
     // };
 
     Meteor.call('prints.insert', formData);
+  }
+});
+
+var priceArray = new ReactiveArray([{}]);
+
+Template.admin_prints_create_prices.events({
+  'click a.add_price'(event, template) {
+    event.preventDefault();
+
+    priceArray.push({});
+
+    // Template.instance().checked.set( !Template.instance().checked.get() );
+
+    // Meteor.call('prints.toggle-publish', this._id, !this.is_enabled);
+  },
+  'click .material-icons'(event) {
+    priceArray.remove(this);
+  }
+});
+
+Template.admin_prints_create_prices.helpers({
+  price_rows() {
+    return priceArray.list();
   }
 });

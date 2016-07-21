@@ -1,8 +1,12 @@
 import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
-import { CONFIG } from './config';
+import './config';
 
 import Fixtures from './fixtures';
+
+import '../../collections/artists/model';
+import '../../collections/artists/methods';
+import '../../collections/artists/publishes';
 
 import '../../collections/categories/model';
 import '../../collections/categories/methods';

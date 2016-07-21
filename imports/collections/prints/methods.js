@@ -6,6 +6,7 @@ if (Meteor.isServer) {
     'prints.insert'(print) {
       check(print, Object);
       check(print.ref, String);
+      check(print.publication, String);
       check(print.title, String);
       check(print.prices, Array);
 

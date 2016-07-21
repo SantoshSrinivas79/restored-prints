@@ -1,6 +1,7 @@
 import { Prints } from '../../collections/prints/model';
 import { Publications } from '../../collections/publications/model';
 import { Categories } from '../../collections/categories/model';
+import { Artists } from '../../collections/artists/model';
 
 import * as constants from '../../lib/constants';
 
@@ -9,6 +10,7 @@ class Fixtures {
     Prints.remove({});
     Publications.remove({});
     Categories.remove({});
+    Artists.remove({});
   };
 
   buildIndexes() {
@@ -37,7 +39,7 @@ class Fixtures {
     for(var i = 0; i < 10; i++) {
       Prints.insert({
         ref: 'JGD022',
-        title:  'Kingfisher',
+        title:  'Kingfisher' + i,
         latin_title_historic: 'Alcedo isipda, Linn.',
         latin_title_modern: 'Alcedo atthis',
         publication: publication,
@@ -76,6 +78,9 @@ class Fixtures {
 
     Categories.insert({title: 'American', type: constants.ART_CATEGORY });
     Categories.insert({title: 'European', type: constants.ART_CATEGORY });
+
+    Artists.insert({title: 'John Gould'});
+    Artists.insert({title: 'Elizabeth Gould'});
   }
 }
 

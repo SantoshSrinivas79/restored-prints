@@ -30,7 +30,7 @@ Template.admin_prints_list.helpers({
       showFilter: false,
       showNavigation: 'never',
       fields: [
-        {label: 'Published', tmpl: Template.admin_prints_list_published},
+        {key: 'is_enabled', label: 'Published', tmpl: Template.admin_prints_list_published},
         {key: 'ref', label: 'Ref'},
         {key: 'title', label: 'Title'},
         {key: 'image', label: 'Image', tmpl: Template.admin_prints_list_image, sortable: false},
@@ -50,14 +50,14 @@ Template.admin_prints_list_published.onCreated(function() {
 
 Template.admin_prints_list_published.events({
   'click .checkbox'(event, template) {
-    event.preventDefault();
+    // event.preventDefault();
 
-    console.log(Template.instance());
-    console.log(template);
+    console.log(Template.instance().data._id);
+    console.log(template.data._id);
 
-    Template.instance().checked.set( !Template.instance().checked.get() );
+    // Template.instance().checked.set( !Template.instance().checked.get() );
 
-    Meteor.call('prints.toggle-publish', this._id, !this.is_enabled);
+    // Meteor.call('prints.toggle-publish', this._id, !this.is_enabled);
   }
 });
 
