@@ -1,0 +1,56 @@
+<template name="admin_layout">
+  <head>
+    <title>restored-prints</title>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="teal col s12">
+          <div class="nav-wrapper">
+            <a href="/admin/" class="brand-logo left">Admin</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+              <li><a href="sass.html">Sass</a></li>
+              <li><a href="badges.html">Components</a></li>
+              <li><a href="collapsible.html">JavaScript</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+
+      <div class="row">
+        <div class="col s2">
+          <form>
+            <ul id="admin_layout_navigation" class="collapsible collapsible-accordion" data-collapsible="expandable">
+              <li class="active">
+                <div class="collapsible-header active">Prints</div>
+                <div class="collapsible-body">
+                  <a href="/admin/prints/"><p>List</p></a>
+                  <a href="/admin/prints/create"><p>Create</p></a>
+                </div>
+              </li>
+              <li>
+                <div class="collapsible-header">Painters</div>
+                <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+              </li>
+              <li>
+                <div class="collapsible-header">Publications</div>
+                <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+              </li>
+            </ul>
+          </form>
+        </div>
+        <div class="col s10">
+          <div class="row">
+            {{#if isReady}}
+              {{> Template.dynamic template=main}}
+            {{else}}
+              {{> preloader}}
+            {{/if}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</template>

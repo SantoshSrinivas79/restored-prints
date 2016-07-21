@@ -1,0 +1,10 @@
+<template name="breadcrumb">
+  <nav>
+    <div class="nav-wrapper teal">
+      <div class="col s12">
+        <a href="{{parent_route_path}}" class="breadcrumb">{{parent_route_name}}</a>
+        <span class="breadcrumb">{{current_route_name}}</span>
+      </div>
+    </div>
+  </nav>
+</template>
