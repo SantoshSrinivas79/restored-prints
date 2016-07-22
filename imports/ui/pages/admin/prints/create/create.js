@@ -29,7 +29,18 @@ Template.admin_prints_create.events({
       formData[val['name']] = val['value'];
     });
 
-    console.log(formData);
+    var prices = [];
+    $('.price-row').each(function() {
+      var priceObj = {
+        mmx: parseInt($(this).find('input.mmx').val()),
+        mmy: parseInt($(this).find('input.mmy').val()),
+        price: parseInt($(this).find('input.price').val())
+      };
+
+      prices.push(priceObj);
+    });
+
+    formData.prices = prices;
 
     // var printObj = {
     //   ref: print.ref,
