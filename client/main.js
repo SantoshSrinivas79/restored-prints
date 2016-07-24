@@ -1,5 +1,5 @@
-import '../imports/startup/client/main/index';
-import '../imports/startup/client/admin/index';
+import './startup/client/main/index';
+import './startup/client/admin/index';
 
 Template.registerHelper("isReady", function (sub) {
   if(sub) {

@@ -10,10 +10,6 @@ if (Meteor.isServer) {
       check(print.title, String);
       check(print.prices, Array);
 
-      if (!this.userId) {
-        throw new Meteor.Error('not-authorized');
-      }
-
       Prints.insert({
         ref: print.ref,
         title: print.title,
@@ -24,7 +20,10 @@ if (Meteor.isServer) {
         painting_by: print.painting_by,
         description: print.description,
         prices: print.prices,
-        tags: print.tags
+        tags: print.tags,
+        image_url: print.image_url,
+        date_added: moment().unix(),
+        is_enabled: true
       });
     },
     'prints.remove'(printId) {

@@ -19,9 +19,25 @@
               </div>
               <div class="row">
                 <div class="input-field col m12">
-                  <button class="btn waves-effect waves-light right" type="submit" name="action">Submit
-                    <i class="material-icons right">send</i>
-                  </button>
+                  {{#if upload_in_progress}}
+                    <div class="preloader-wrapper big active right">
+                      <div class="spinner-layer spinner-blue-only">
+                        <div class="circle-clipper left">
+                          <div class="circle"></div>
+                        </div>
+                        <div class="gap-patch">
+                          <div class="circle"></div>
+                        </div>
+                        <div class="circle-clipper right">
+                          <div class="circle"></div>
+                        </div>
+                      </div>
+                    </div>
+                  {{else}}
+                    <button class="btn waves-effect waves-light right" type="submit" name="action">Submit
+                      <i class="material-icons right">send</i>
+                    </button>
+                  {{/if}}
                 </div>
               </div>
             </div>
@@ -56,12 +72,12 @@
 
   <div class="row">
     <div class="input-field col s12">
-      <select required>
+      <select name="publication" required>
         {{#each publications}}
           {{#if isFirst}}
-            <option value="{{title}}" selected>{{title}}</option>
+            <option value="{{_id}}" selected>{{title}}</option>
           {{else}}
-            <option value="{{title}}">{{title}}</option>
+            <option value="{{_id}}">{{title}}</option>
           {{/if}}
         {{/each}}
       </select>
@@ -108,28 +124,37 @@
 </template>
 
 <template name="admin_prints_create_filepicker">
-  {{> dropzone url='http://somewebsite.com/upload' maxFilesize=1 autoProcessQueue=false}}
+  <div class="file-field input-field">
+    <div class="btn">
+      <span>File</span>
+      <input type="file" name="image_upload" accept=".png" required>
+    </div>
+    <div class="file-path-wrapper">
+      <input class="file-path validate" type="text">
+    </div>
+    <img class="responsive-img"/>
+  </div>
 </template>
 
 <template name="admin_prints_create_prices">
   {{#each price_rows}}
-  <div class="row price-row">
-    <div class="input-field col s3">
-      <input id="mmx{{@index}}" type="number" class="validate mmx" value="100" required>
-      <label for="mmx{{@index}}">X</label>
+    <div class="row price-row">
+      <div class="input-field col s3">
+        <input id="mmx{{@index}}" type="number" class="validate mmx" value="100" required>
+        <label for="mmx{{@index}}">X</label>
+      </div>
+      <div class="input-field col s3">
+        <input id="mmy{{@index}}" type="number" class="validate mmy" value="200" required>
+        <label for="mmy{{@index}}">Y</label>
+      </div>
+      <div class="input-field col s4">
+        <input id="price{{@index}}" type="number" class="validate price" value="50" required>
+        <label for="price{{@index}}">Price</label>
+      </div>
+      <div class="input-field col s1">
+        <i class="material-icons close">close</i>
+      </div>
     </div>
-    <div class="input-field col s3">
-      <input id="mmy{{@index}}" type="number" class="validate mmy" value="200" required>
-      <label for="mmy{{@index}}">Y</label>
-    </div>
-    <div class="input-field col s4">
-      <input id="price{{@index}}" type="number" class="validate price" value="50" required>
-      <label for="price{{@index}}">Price</label>
-    </div>
-    <div class="input-field col s1">
-      <i class="material-icons close">close</i>
-    </div>
-  </div>
   {{/each}}
   <div class="row">
     <div class="input-field col s4">

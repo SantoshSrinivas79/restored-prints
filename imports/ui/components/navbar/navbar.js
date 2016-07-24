@@ -1,5 +1,4 @@
 import { Categories } from '../../../collections/categories/model';
-import * as constants from '../../../lib/constants';
 import './navbar.html';
 
 Template.navbar.onRendered(function() {
@@ -13,9 +12,9 @@ Template.navbar.helpers({
     return FlowRouter.path('search', {}, {c: this.title.toLowerCase()});
   },
   category_wildlife() {
-    return Categories.find({type: constants.WILDLIFE_CATEGORY});
+    return Categories.find({type: Module.both.constants.CATEGORIES.WILDLIFE});
   },
   category_art() {
-    return Categories.find({type: constants.ART_CATEGORY});
+    return Categories.find({type: Module.both.constants.CATEGORIES.ART});
   }
 });

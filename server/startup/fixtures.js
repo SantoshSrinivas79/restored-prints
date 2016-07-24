@@ -1,9 +1,7 @@
-import { Prints } from '../../collections/prints/model';
-import { Publications } from '../../collections/publications/model';
-import { Categories } from '../../collections/categories/model';
-import { Artists } from '../../collections/artists/model';
-
-import * as constants from '../../lib/constants';
+import { Prints } from '../../imports/collections/prints/model';
+import { Publications } from '../../imports/collections/publications/model';
+import { Categories } from '../../imports/collections/categories/model';
+import { Artists } from '../../imports/collections/artists/model';
 
 class Fixtures {
   cleanDatabase() {
@@ -62,22 +60,21 @@ class Fixtures {
         tags: [
           'birds', 'american'
         ],
-        image: 'http://placehold.it/420x420',
-        thumbnail: 'http://placehold.it/100x100',
-        date_added: moment().unix() + (10000 * i),
+        image_url: 'http://placehold.it/420x420',
+        date_added: moment().unix(),
         is_enabled: true
       });
     }
 
-    Categories.insert({title: 'Birds', type: constants.WILDLIFE_CATEGORY });
-    Categories.insert({title: 'Mammals', type: constants.WILDLIFE_CATEGORY });
-    Categories.insert({title: 'Reptiles', type: constants.WILDLIFE_CATEGORY });
-    Categories.insert({title: 'Fish', type: constants.WILDLIFE_CATEGORY });
-    Categories.insert({title: 'Flora', type: constants.WILDLIFE_CATEGORY });
-    Categories.insert({title: 'Fungi', type: constants.WILDLIFE_CATEGORY });
+    Categories.insert({title: 'Birds', type: Modules.both.constants.CATEGORIES.WILDLIFE });
+    Categories.insert({title: 'Mammals', type: Modules.both.constants.CATEGORIES.WILDLIFE });
+    Categories.insert({title: 'Reptiles', type: Modules.both.constants.CATEGORIES.WILDLIFE });
+    Categories.insert({title: 'Fish', type: Modules.both.constants.CATEGORIES.WILDLIFE });
+    Categories.insert({title: 'Flora', type: Modules.both.constants.CATEGORIES.WILDLIFE });
+    Categories.insert({title: 'Fungi', type: Modules.both.constants.CATEGORIES.WILDLIFE });
 
-    Categories.insert({title: 'American', type: constants.ART_CATEGORY });
-    Categories.insert({title: 'European', type: constants.ART_CATEGORY });
+    Categories.insert({title: 'American', type: Modules.both.constants.CATEGORIES.ART });
+    Categories.insert({title: 'European', type: Modules.both.constants.CATEGORIES.ART });
 
     Artists.insert({title: 'John Gould'});
     Artists.insert({title: 'Elizabeth Gould'});

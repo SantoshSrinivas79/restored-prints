@@ -1,8 +1,8 @@
-import '../../../ui/layouts/main/layout';
-import '../../../ui/pages/main/home/home';
-import '../../../ui/pages/main/print/print';
-import '../../../ui/pages/main/search/search';
-import '../../../ui/pages/main/404/404';
+import '../../../../imports/ui/layouts/main/layout';
+import '../../../../imports/ui/pages/main/home/home';
+import '../../../../imports/ui/pages/main/print/print';
+import '../../../../imports/ui/pages/main/search/search';
+import '../../../../imports/ui/pages/main/404/404';
 
 FlowRouter.subscriptions = function() {
   this.register('categories', Meteor.subscribe('categories'));

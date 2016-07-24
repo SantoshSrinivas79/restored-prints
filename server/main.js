@@ -1,1 +1,1 @@
-import '../imports/startup/server/index';
+import './startup/index';

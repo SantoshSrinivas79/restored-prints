@@ -3,9 +3,30 @@ import './create.html';
 import { Publications } from '../../../../../collections/publications/model';
 import { Artists } from '../../../../../collections/artists/model';
 
+var priceArray = new ReactiveArray([{}]);
+var uploadStatus = new ReactiveVar(false);
+
+var displayPreviewImage = function(fileField) {
+  var input = fileField.find('input[type="file"]')[0];
+
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+      fileField.find('img').attr('src', e.target.result);
+    };
+
+    reader.readAsDataURL(input.files[0]);
+  }
+};
+
 Template.admin_prints_create_form.onRendered(function() {
   this.autorun(() => {
     $('select').material_select();
+
+    $('.file-field input[type="file"]').change(function() {
+      displayPreviewImage($('.file-field'));
+    });
   });
 });
 
@@ -18,9 +39,17 @@ Template.admin_prints_create_form.helpers({
   }
 });
 
+Template.admin_prints_create.helpers({
+  upload_in_progress() {
+    return uploadStatus.get();
+  }
+});
+
 Template.admin_prints_create.events({
   'submit #admin_prints_create'(event) {
     event.preventDefault();
+
+    uploadStatus.set(true);
 
     var printObj = $('#admin_prints_create').serializeArray();
 
@@ -39,39 +68,32 @@ Template.admin_prints_create.events({
 
       prices.push(priceObj);
     });
-
     formData.prices = prices;
 
-    // var printObj = {
-    //   ref: print.ref,
-    //   title:  print.title,
-    //   latin_title_historic: print.latin_title_historic,
-    //   latin_title_modern: print.latin_title_modern,
-    //   publication: print.publication,
-    //   lithograph_by: print.lithograph_by,
-    //   painting_by: print.painting_by,
-    //   description: print.description,
-    //   prices: print.prices,
-    //   tags: print.tags
-    // };
+    var files = $('.file-field input[type="file"]')[0].files;
+    Modules.client.uploadToCloudinary(files[0], function(err, url) {
+      if(err) {
+        return console.error(err);
+      }
 
-    Meteor.call('prints.insert', formData);
+      formData.image_url = url;
+
+      Meteor.call('prints.insert', formData);
+
+      FlowRouter.go("/admin/prints/");
+
+      uploadStatus.set(false);
+    });
   }
 });
 
-var priceArray = new ReactiveArray([{}]);
-
 Template.admin_prints_create_prices.events({
-  'click a.add_price'(event, template) {
+  'click a.add_price'(event) {
     event.preventDefault();
 
     priceArray.push({});
-
-    // Template.instance().checked.set( !Template.instance().checked.get() );
-
-    // Meteor.call('prints.toggle-publish', this._id, !this.is_enabled);
   },
-  'click .material-icons'(event) {
+  'click .material-icons'() {
     priceArray.remove(this);
   }
 });
