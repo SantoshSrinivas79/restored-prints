@@ -30,6 +30,7 @@ FlowRouter.route('/print/:ref', {
   name: 'print',
   subscriptions: function(params) {
     this.register('print', Meteor.subscribe('print_by_ref', params.ref));
+    this.register('publications', Meteor.subscribe('publications'));
   },
   action: function() {
     BlazeLayout.render('layout', { main: "print" });

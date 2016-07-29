@@ -44,7 +44,6 @@ Template.admin_prints_list.helpers({
 
 
 Template.admin_prints_list_published.onCreated(function() {
-  console.log("reactive var set on " + this.data._id);
   this.checked = new ReactiveVar(this.data.is_enabled);
 });
 

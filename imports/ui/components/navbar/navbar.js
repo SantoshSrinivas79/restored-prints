@@ -12,9 +12,9 @@ Template.navbar.helpers({
     return FlowRouter.path('search', {}, {c: this.title.toLowerCase()});
   },
   category_wildlife() {
-    return Categories.find({type: Module.both.constants.CATEGORIES.WILDLIFE});
+    return Categories.find({type: Modules.both.constants.CATEGORIES.WILDLIFE});
   },
   category_art() {
-    return Categories.find({type: Module.both.constants.CATEGORIES.ART});
+    return Categories.find({type: Modules.both.constants.CATEGORIES.ART});
   }
 });

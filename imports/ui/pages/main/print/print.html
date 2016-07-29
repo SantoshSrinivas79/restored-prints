@@ -1,21 +1,65 @@
 <template name="print">
   <div class="row">
-    {{#if Template.subscriptionsReady}}
-      {{#with print_obj}}
-      <div class="col m9">
-        <div class="thumbnail">
-          <img class="img-responsive" src="http://placehold.it/800x300" alt="">
-          <div class="caption-full">
-            <h4 class="pull-right">$24.99</h4>
-            <h4><a href="#">{{title}}</a></h4>
-
-            {{#if description}}
-            <p>{{description}}</p>
-            {{/if}}
-          </div>
+    {{#with print}}
+    <div class="col m8">
+      <div class="card">
+        <div class="card-image">
+          <img class="img-responsive" src="{{image_url}}" alt="">
         </div>
+        {{#if description}}
+        <div class="card-content">
+          <p class="flow-text">{{description}}</p>
+        </div>
+        {{/if}}
       </div>
-      {{/with}}
-    {{/if}}
+    </div>
+    <div class="col m4">
+      {{> print_prices}}
+      {{> print_publication}}
+    </div>
+    {{/with}}
+  </div>
+</template>
+
+<template name="print_publication">
+  {{#with publication_obj}}
+  <div class="card">
+    <div class="card-content">
+      <span class="card-title">Publication</span>
+      <table class="bordered">
+        <tr>
+          <td>Title:</td>
+          <td><a href="">{{title}}</a></td>
+        </tr>
+        <tr>
+          <td>Author(s):</td>
+          <td>{{authors}}</td>
+        </tr>
+        <tr>
+          <td>Published:</td>
+          <td>{{first_published}} - {{last_published}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  {{/with}}
+</template>
+
+<template name="print_prices">
+  <div class="card">
+    <div class="card-content">
+      <span class="card-title">Prices</span>
+      <table>
+        {{#each prices}}
+          <tr>
+            <td>{{mmx}}mm x {{mmy}}mm</td>
+            <td>£{{price}}</td>
+            <td>
+              <input type="button" value="Buy Now!"/>
+            </td>
+          </tr>
+        {{/each}}
+      </table>
+    </div>
   </div>
 </template>
