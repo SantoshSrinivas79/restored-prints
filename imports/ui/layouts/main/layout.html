@@ -7,11 +7,27 @@
   <body>
     {{> navbar}}
     <div class="container">
+      <div class="row" style="margin-bottom: 0; margin-top: 20px;">
+        {{> search_bar}}
+      </div>
       {{#if isReady}}
+      <div class="row">
         {{> Template.dynamic template=main}}
+      </div>
       {{else}}
         {{> preloader}}
       {{/if}}
     </div>
   </body>
+</template>
+
+<template name="search_bar">
+  <div class="card">
+    <form>
+      <div class="input-field">
+        <input id="search" type="search" name="query" placeholder="Search">
+        <label for="search"><i class="material-icons">search</i></label>
+      </div>
+    </form>
+  </div>
 </template>

@@ -1,3 +1,47 @@
 <template name="home">
-  <p>Welcome to Restored Prints</p>
+  <div class="row">
+    <div class="col m5">
+      {{#with latest_print}}
+        <div class="card">
+          <div class="card-image">
+            <img class="img-responsive" src="{{image_url}}" alt="">
+          </div>
+          <div class="card-content">
+            <span class="card-title">{{title}}</span>
+            <p>{{truncate description 100}}</p>
+          </div>
+        </div>
+      {{/with}}
+    </div>
+    <div class="col m7">
+      <div class="row">
+        {{#each three_next_latest_prints}}
+          <div class="col m4">
+            <div class="card">
+              <div class="card-image">
+                <img class="img-responsive" src="{{image_url}}" alt="">
+              </div>
+              <div class="card-content">
+                <span class="card-title">{{title}}</span>
+              </div>
+            </div>
+          </div>
+        {{/each}}
+      </div>
+      <div class="row">
+        <div class="col s12">
+          <div class="card">
+            <div class="card-content">
+              <p>UNDOUBTEDLY THE FINEST PRINTS YOU WILL EVER SEE</p>
+
+              <p>NATURAL HISTORY PRINTS and SELECTED WORKS OF ART</p>
+
+              <p>BROUGHT BACK TO THEIR ORIGINAL COLOURS AND CONDITION
+                GUARANTEED NEITHER TO FADE NOR DISCOLOUR FOR AT LEAST 100 YEARS *</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>

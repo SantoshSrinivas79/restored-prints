@@ -10,29 +10,32 @@ FlowRouter.subscriptions = function() {
 
 FlowRouter.route('/', {
   name: 'home',
-  action: function() {
+  subscriptions() {
+    this.register('prints_home_page', Meteor.subscribe('prints_main'));
+  },
+  action() {
     BlazeLayout.render('layout', { main: "home" });
   }
 });
 
 FlowRouter.route('/search', {
   name: 'search',
-  subscriptions: function(params, queryParams) {
-    this.register('search_results', Meteor.subscribe('print_search', queryParams.c));
+  subscriptions(params, queryParams) {
+    this.register('search_results', Meteor.subscribe('prints_main', queryParams.c));
     this.register('search_publications', Meteor.subscribe('publications'));
   },
-  action: function() {
+  action() {
     BlazeLayout.render('layout', { main: "search" });
   }
 });
 
 FlowRouter.route('/print/:ref', {
   name: 'print',
-  subscriptions: function(params) {
+  subscriptions(params) {
     this.register('print', Meteor.subscribe('print_by_ref', params.ref));
     this.register('publications', Meteor.subscribe('publications'));
   },
-  action: function() {
+  action() {
     BlazeLayout.render('layout', { main: "print" });
   }
 });

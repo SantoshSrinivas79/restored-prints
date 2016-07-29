@@ -1,10 +1,4 @@
 <template name="search">
-  <div class="row" style="margin-bottom: 0; margin-top: 20px;">
-    <div class="col s12">
-      {{> search_input}}
-    </div>
-  </div>
-
   <div class="row">
     <div class="col s12 l3">
       {{> search_refinement}}
@@ -59,14 +53,16 @@
   </form>
 </template>
 
-<template name="search_input">
+<template name="search_print">
   <div class="card">
-    <form>
-      <div class="input-field">
-        <input id="search" type="search" name="query" placeholder="Search">
-        <label for="search"><i class="material-icons">search</i></label>
+    <a href="{{path}}">
+      <div class="card-image">
+        <img src="{{image_url}}">
       </div>
-    </form>
+      <div class="card-content">
+        <span class="card-title">{{title}}</span>
+      </div>
+    </a>
   </div>
 </template>
 

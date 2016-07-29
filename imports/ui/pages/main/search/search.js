@@ -5,9 +5,6 @@ import { Template } from 'meteor/templating';
 import { Prints } from '../../../../collections/prints/model';
 import { Publications } from '../../../../collections/publications/model';
 
-import "../../../components/search_print/search_print";
-import "../../../components/preloader/preloader";
-
 var size = 5;
 
 Template.search.helpers({
@@ -26,17 +23,6 @@ Template.search.helpers({
   },
 });
 
-Template.search_input.events({
-  'submit #search'(event) {
-    event.preventDefault();
-
-    const target = event.target;
-    const text = target.query.value;
-
-    FlowRouter.go('/search/' + text);
-  }
-});
-
 Template.search_refinement.onRendered(function() {
   this.autorun(() => {
     $('#search_refinement').collapsible({
@@ -48,5 +34,23 @@ Template.search_refinement.onRendered(function() {
 Template.search_refinement.helpers({
   publications() {
     return Publications.find({});
+  }
+});
+
+Template.search_print.helpers({
+  path() {
+    var result = this;
+    return FlowRouter.url('print', {ref: result.ref});
+  },
+  price_from() {
+    if(this.prices.length === 1) {
+      return this.prices[0].price;
+    } else {
+      return "From " + Math.min.apply(Math, this.prices.map(function(price){return price.price;}))
+    }
+
+  },
+  truncate(string, length) {
+    return string.substring(0, length) + '...';
   }
 });
