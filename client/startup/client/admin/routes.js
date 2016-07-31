@@ -24,7 +24,7 @@ var printRoutes = adminRoutes.group({
 printRoutes.route('/', {
   name: 'list',
   subscriptions: function() {
-    this.register('admin_prints', Meteor.subscribe('prints'));
+    this.register('admin_prints', Meteor.subscribe('prints_admin'));
     this.register('admin_publications', Meteor.subscribe('publications'));
   },
   action: function() {

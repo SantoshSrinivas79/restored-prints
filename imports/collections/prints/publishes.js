@@ -18,7 +18,7 @@ if (Meteor.isServer) {
   });
 
   ///////// ADMIN
-  Meteor.publish('prints', function () {
+  Meteor.publish('prints_admin', function () {
     // if (! this.userId) {
     //   throw new Meteor.Error('not-authorized');
     // }

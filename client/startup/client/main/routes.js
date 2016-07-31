@@ -21,7 +21,7 @@ FlowRouter.route('/', {
 FlowRouter.route('/search', {
   name: 'search',
   subscriptions(params, queryParams) {
-    this.register('search_results', Meteor.subscribe('prints_main', queryParams.c));
+    this.register('search_results', Meteor.subscribe('print_search', queryParams.c));
     this.register('search_publications', Meteor.subscribe('publications'));
   },
   action() {
