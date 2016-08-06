@@ -2,6 +2,7 @@ import './create.html';
 
 import { Publications } from '../../../../../collections/publications/model';
 import { Artists } from '../../../../../collections/artists/model';
+import { ImageUpload } from '../../../../../common/image_upload';
 
 var priceArray = new ReactiveArray([{}]);
 var uploadStatus = new ReactiveVar(false);
@@ -71,7 +72,8 @@ Template.admin_prints_create.events({
     formData.prices = prices;
 
     var files = $('.file-field input[type="file"]')[0].files;
-    Modules.client.uploadToCloudinary(files[0], function(err, url) {
+
+    ImageUpload.uploadImage(files[0], function(err, url) {
       if(err) {
         return console.error(err);
       }

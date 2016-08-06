@@ -40,7 +40,7 @@ Template.search_refinement.helpers({
 Template.search_print.helpers({
   path() {
     var result = this;
-    return FlowRouter.url('print', {ref: result.ref});
+    return FlowRouter.url('print', {ref: result._id});
   },
   price_from() {
     if(this.prices.length === 1) {

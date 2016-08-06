@@ -2,6 +2,7 @@ import { Prints } from '../../imports/collections/prints/model';
 import { Publications } from '../../imports/collections/publications/model';
 import { Categories } from '../../imports/collections/categories/model';
 import { Artists } from '../../imports/collections/artists/model';
+import { CONSTANTS } from '../../imports/common/constants';
 
 class Fixtures {
   cleanDatabase() {
@@ -36,7 +37,7 @@ class Fixtures {
 
     for(var i = 0; i < 10; i++) {
       Prints.insert({
-        ref: 'JGD022',
+        _id: 'JGD022'+ i,
         title:  'Kingfisher' + i,
         latin_title_historic: 'Alcedo isipda, Linn.',
         latin_title_modern: 'Alcedo atthis',
@@ -64,15 +65,15 @@ class Fixtures {
       });
     }
 
-    Categories.insert({title: 'Birds', type: Modules.both.constants.CATEGORIES.WILDLIFE });
-    Categories.insert({title: 'Mammals', type: Modules.both.constants.CATEGORIES.WILDLIFE });
-    Categories.insert({title: 'Reptiles', type: Modules.both.constants.CATEGORIES.WILDLIFE });
-    Categories.insert({title: 'Fish', type: Modules.both.constants.CATEGORIES.WILDLIFE });
-    Categories.insert({title: 'Flora', type: Modules.both.constants.CATEGORIES.WILDLIFE });
-    Categories.insert({title: 'Fungi', type: Modules.both.constants.CATEGORIES.WILDLIFE });
+    Categories.insert({title: 'Birds', type: CONSTANTS.CATEGORIES.WILDLIFE });
+    Categories.insert({title: 'Mammals', type: CONSTANTS.CATEGORIES.WILDLIFE });
+    Categories.insert({title: 'Reptiles', type: CONSTANTS.CATEGORIES.WILDLIFE });
+    Categories.insert({title: 'Fish', type: CONSTANTS.CATEGORIES.WILDLIFE });
+    Categories.insert({title: 'Flora', type: CONSTANTS.CATEGORIES.WILDLIFE });
+    Categories.insert({title: 'Fungi', type: CONSTANTS.CATEGORIES.WILDLIFE });
 
-    Categories.insert({title: 'American', type: Modules.both.constants.CATEGORIES.ART });
-    Categories.insert({title: 'European', type: Modules.both.constants.CATEGORIES.ART });
+    Categories.insert({title: 'American', type: CONSTANTS.CATEGORIES.ART });
+    Categories.insert({title: 'European', type: CONSTANTS.CATEGORIES.ART });
 
     Artists.insert({title: 'John Gould'});
     Artists.insert({title: 'Elizabeth Gould'});

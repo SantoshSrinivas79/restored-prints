@@ -29,10 +29,10 @@ FlowRouter.route('/search', {
   }
 });
 
-FlowRouter.route('/print/:ref', {
+FlowRouter.route('/print/:id', {
   name: 'print',
   subscriptions(params) {
-    this.register('print', Meteor.subscribe('print_by_ref', params.ref));
+    this.register('print', Meteor.subscribe('print_by_ref', params.id));
     this.register('publications', Meteor.subscribe('publications'));
   },
   action() {

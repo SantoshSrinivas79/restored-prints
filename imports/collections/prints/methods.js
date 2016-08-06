@@ -11,7 +11,7 @@ if (Meteor.isServer) {
       check(print.prices, Array);
 
       Prints.insert({
-        ref: print.ref,
+        _id: print.ref,
         title: print.title,
         latin_title_historic: print.latin_title_historic,
         latin_title_modern: print.latin_title_modern,
