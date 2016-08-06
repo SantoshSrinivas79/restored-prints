@@ -52,7 +52,7 @@ livedata@1.0.18
 localstorage@1.0.11
 logging@1.1.14
 manuel:reactivearray@1.0.5
-materialize:materialize@0.97.7
+materialize:materialize@0.97.6
 meteor@1.2.16
 meteor-base@1.0.4
 meteorhacks:fast-render@2.14.0
