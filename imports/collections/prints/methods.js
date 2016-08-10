@@ -1,5 +1,6 @@
 import { check } from 'meteor/check';
 import { Prints } from './model';
+import { Publications } from '../publications/model';
 
 if (Meteor.isServer) {
   Meteor.methods({
@@ -15,7 +16,7 @@ if (Meteor.isServer) {
         title: print.title,
         latin_title_historic: print.latin_title_historic,
         latin_title_modern: print.latin_title_modern,
-        publication: print.publication,
+        publication: Publications.findOne({_id: print.publication}),
         lithograph_by: print.lithograph_by,
         painting_by: print.painting_by,
         description: print.description,

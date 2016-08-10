@@ -10,21 +10,37 @@ var size = 5;
 Template.search.onCreated(function() {
   var self = this;
   self.autorun(() => {
-    self.subscribe('print_search', Session.get('search_query'));
+    self.subscribe('print_search');
     self.subscribe('publications');
   })
 });
 
+var chunkSearchResults = function(results) {
+  var chunks = [];
+  while (results.length > size) {
+    chunks.push({ row: results.slice(0, size)});
+    results = results.slice(size);
+  }
+  chunks.push({row: results});
+  return chunks;
+};
+
 Template.search.helpers({
   search_results() {
-    var prints = Prints.find({});
-    var chunks = [];
-    while (prints.length > size) {
-      chunks.push({ row: prints.slice(0, size)});
-      prints = prints.slice(size);
+    var query = Session.get('search_query');
+
+    var prints;
+    if(query){
+      prints = Prints.find({
+        $or: [
+          {'title': {$regex: query, $options: 'i'}}
+        ]
+      });
+    } else {
+      prints = Prints.find({});
     }
-    chunks.push({row: prints});
-    return chunks;
+
+    return chunkSearchResults(prints);
   },
   search_result_count() {
     return Prints.find({}).count();

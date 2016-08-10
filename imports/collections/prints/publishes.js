@@ -1,7 +1,7 @@
 import { Prints } from './model';
 
 if (Meteor.isServer) {
-  Meteor.publish('prints_main', function() {
+  Meteor.publish('prints', function() {
     return Prints.find({is_enabled: true});
   });
 
@@ -9,12 +9,28 @@ if (Meteor.isServer) {
     return Prints.find({}, {fields: {is_enabled: false}, limit: 4});
   });
 
-  Meteor.publish('print_search', function (queryString) {
-    return Prints.find({
-      $text: {
-        $search: queryString
-      }
-    });
+  Meteor.publish('print_search', function () {
+    return Prints.find(
+      {
+        is_enabled: true
+      },
+      {
+        fields: {
+          _id: 1,
+          title:  1,
+          latin_title_historic: 1,
+          latin_title_modern: 1,
+          "publication.title": 1,
+          "publication.authors": 1,
+          lithograph_by: 1,
+          painting_by: 1,
+          description: 1,
+          tags: 1,
+          image_url: 1,
+        }
+      },
+      {}
+    );
   });
 
   Meteor.publish('print_by_ref', function (ref) {

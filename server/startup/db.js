@@ -13,18 +13,19 @@ class Fixtures {
   };
 
   buildIndexes() {
-    Prints._ensureIndex({
-      title: 'text',
-      latin_title_historic: 'text',
-      latin_title_modern: 'text',
-      publication: 'text',
-      lithograph_by: 'text',
-      painting_by: 'text',
-      description: 'text',
-      tags: 'text'
-    }, {
-      name: 'print_search_index'
-    });
+    // Prints._ensureIndex({
+    //   title: 'text',
+    //   latin_title_historic: 'text',
+    //   latin_title_modern: 'text',
+    //   "publication.title": 'text',
+    //   "publication.authors": 'text',
+    //   lithograph_by: 'text',
+    //   painting_by: 'text',
+    //   description: 'text',
+    //   tags: 'text'
+    // }, {
+    //   name: 'print_search_index'
+    // });
   };
 
   runFixtures() {
@@ -41,7 +42,7 @@ class Fixtures {
         title:  'Kingfisher' + i,
         latin_title_historic: 'Alcedo isipda, Linn.',
         latin_title_modern: 'Alcedo atthis',
-        publication: publication,
+        publication: Publications.findOne({_id: publication}),
         lithograph_by: ['John Gould', 'Elizabeth Gould'],
         painting_by: ['John Gould', 'Elizabeth Gould'],
         description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
