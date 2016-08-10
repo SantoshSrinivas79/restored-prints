@@ -10,7 +10,7 @@
       <div class="row" style="margin-bottom: 0; margin-top: 20px;">
         {{> search_bar}}
       </div>
-      {{#if isReady}}
+      {{#if Template.subscriptionsReady}}
       <div class="row">
         {{> Template.dynamic template=main}}
       </div>
@@ -25,7 +25,7 @@
   <div class="card">
     <form>
       <div class="input-field">
-        <input id="search" type="search" name="query" placeholder="Search">
+        <input id="search" type="search" name="query" value="{{search_query}}" placeholder="Search">
         <label for="search"><i class="material-icons">search</i></label>
       </div>
     </form>

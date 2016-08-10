@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
 
-import Fixtures from './fixtures';
+import Fixtures from './db';
 
 import '../../imports/collections/artists/model';
 import '../../imports/collections/artists/methods';

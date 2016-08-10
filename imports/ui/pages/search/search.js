@@ -2,10 +2,18 @@ import "./search.html";
 import "./search.scss"
 
 import { Template } from 'meteor/templating';
-import { Prints } from '../../../../collections/prints/model';
-import { Publications } from '../../../../collections/publications/model';
+import { Prints } from '../../../collections/prints/model';
+import { Publications } from '../../../collections/publications/model';
 
 var size = 5;
+
+Template.search.onCreated(function() {
+  var self = this;
+  self.autorun(() => {
+    self.subscribe('print_search', Session.get('search_query'));
+    self.subscribe('publications');
+  })
+});
 
 Template.search.helpers({
   search_results() {

@@ -10,7 +10,11 @@ if (Meteor.isServer) {
   });
 
   Meteor.publish('print_search', function (queryString) {
-    return Prints.find({$text: {$search: queryString}}, {fields: {is_enabled: false}});
+    return Prints.find({
+      $text: {
+        $search: queryString
+      }
+    });
   });
 
   Meteor.publish('print_by_ref', function (ref) {
