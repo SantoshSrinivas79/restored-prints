@@ -64,7 +64,6 @@ Template.search_print.helpers({
     } else {
       return "From " + Math.min.apply(Math, this.prices.map(function(price){return price.price;}))
     }
-
   },
   truncate(string, length) {
     return string.substring(0, length) + '...';

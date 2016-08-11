@@ -9,6 +9,9 @@ Template.home.onCreated(function() {
 });
 
 Template.home.helpers({
+  path() {
+    return FlowRouter.url('print', {id: this._id});
+  },
   latest_print() {
     return Prints.findOne({});
   },

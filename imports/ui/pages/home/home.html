@@ -3,13 +3,15 @@
     <div class="col m5">
       {{#with latest_print}}
         <div class="card">
-          <div class="card-image">
-            <img class="img-responsive" src="{{image_url}}" alt="">
-          </div>
-          <div class="card-content">
-            <span class="card-title">{{title}}</span>
-            <p>{{truncate description 100}}</p>
-          </div>
+          <a href="{{path}}">
+            <div class="card-image">
+              <img class="img-responsive" src="{{image_url}}" alt="">
+            </div>
+            <div class="card-content">
+              <span class="card-title">{{title}}</span>
+              <p>{{truncate description 100}}</p>
+            </div>
+          </a>
         </div>
       {{/with}}
     </div>
@@ -18,12 +20,14 @@
         {{#each three_next_latest_prints}}
           <div class="col m4">
             <div class="card">
-              <div class="card-image">
-                <img class="img-responsive" src="{{image_url}}" alt="">
-              </div>
-              <div class="card-content">
-                <span class="card-title">{{title}}</span>
-              </div>
+              <a href="{{path}}">
+                <div class="card-image">
+                  <img class="img-responsive" src="{{image_url}}" alt="">
+                </div>
+                <div class="card-content">
+                  <span class="card-title">{{title}}</span>
+                </div>
+              </a>
             </div>
           </div>
         {{/each}}
