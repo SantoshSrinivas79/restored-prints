@@ -11,16 +11,11 @@ FlowRouter.route('/', {
   }
 });
 
-FlowRouter.route('/search', {
+FlowRouter.route('/search/:query?/:page?', {
   name: 'search',
   action() {
     BlazeLayout.render('layout', { main: "search" });
-  },
-  triggersExit: [
-      function() {
-        Session.set('search_query', '');
-      }
-  ]
+  }
 });
 
 FlowRouter.route('/print/:id', {

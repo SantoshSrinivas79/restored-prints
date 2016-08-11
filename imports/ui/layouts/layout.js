@@ -1,4 +1,4 @@
-import "./layout.html"
+import "./layout.html";
 import "../components/navbar/navbar";
 import "../components/preloader/preloader";
 
@@ -24,20 +24,12 @@ Template.layout.onCreated(function() {
   })
 });
 
-Template.search_bar.helpers({
-  search_query: function() {
-    return Session.get('search_query');
-  }
-});
-
 Template.search_bar.events({
-  'keyup #search': _.debounce(function (event) {
-    var query = event.target.value;
+  'submit #search_form'(event) {
+    event.preventDefault();
 
-    Session.set('search_query', query);
+    var query = event.target.query.value;
 
-    if (FlowRouter.getRouteName() !== 'search') {
-      FlowRouter.go('/search');
-    }
-  }, 300)
+    FlowRouter.go('/search/' + query);
+  }
 });

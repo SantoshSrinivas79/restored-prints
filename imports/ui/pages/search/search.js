@@ -5,21 +5,25 @@ import { Template } from 'meteor/templating';
 import { Prints } from '../../../collections/prints/model';
 import { Publications } from '../../../collections/publications/model';
 
-var size = 5;
+const CHUNK_SIZE = 3;
+const PAGE_COUNT = 3;
 
 Template.search.onCreated(function() {
   var self = this;
   self.autorun(() => {
-    self.subscribe('print_search');
+    var query = FlowRouter.getParam('query') || '';
+    var page = FlowRouter.getParam('page') || 0;
+
+    self.subscribe('print_search', {query: query, page: page, count: PAGE_COUNT});
     self.subscribe('publications');
   })
 });
 
 var chunkSearchResults = function(results) {
   var chunks = [];
-  while (results.length > size) {
-    chunks.push({ row: results.slice(0, size)});
-    results = results.slice(size);
+  while (results.length > CHUNK_SIZE) {
+    chunks.push({ row: results.slice(0, CHUNK_SIZE)});
+    results = results.slice(CHUNK_SIZE);
   }
   chunks.push({row: results});
   return chunks;
@@ -27,23 +31,12 @@ var chunkSearchResults = function(results) {
 
 Template.search.helpers({
   search_results() {
-    var query = Session.get('search_query');
-
-    var prints;
-    if(query){
-      prints = Prints.find({
-        $or: [
-          {'title': {$regex: query, $options: 'i'}}
-        ]
-      });
-    } else {
-      prints = Prints.find({});
-    }
+    var prints = Prints.find({});
 
     return chunkSearchResults(prints);
   },
   search_result_count() {
-    return Prints.find({}).count();
+    return Counts.get('print_search_count');
   },
 });
 
@@ -63,8 +56,7 @@ Template.search_refinement.helpers({
 
 Template.search_print.helpers({
   path() {
-    var result = this;
-    return FlowRouter.url('print', {ref: result._id});
+    return FlowRouter.url('print', {id: this._id});
   },
   price_from() {
     if(this.prices.length === 1) {
@@ -76,5 +68,57 @@ Template.search_print.helpers({
   },
   truncate(string, length) {
     return string.substring(0, length) + '...';
+  }
+});
+
+Template.search_pagination.helpers({
+  is_current_page(page) {
+    var current_page = FlowRouter.getParam('page') || 0;
+    return current_page == page;
+  },
+  enabled() {
+    var page_count = Math.ceil(Counts.get('print_search_count') / PAGE_COUNT);
+    return page_count != 1;
+  },
+  pages() {
+    var output = [];
+    var page_count = Math.ceil(Counts.get('print_search_count') / PAGE_COUNT);
+    for(var i = 0; i < page_count; i++) {
+      var page = {page: i};
+
+      if(i === 0) {
+        page.path = FlowRouter.path('search', {query: FlowRouter.getParam('query')});
+      } else {
+        page.path = FlowRouter.path('search', {query: FlowRouter.getParam('query'), page: i})
+      }
+
+      output.push(page);
+    }
+
+    return output;
+  },
+  previous_enabled() {
+    var current_page = FlowRouter.getParam('page') || 0;
+    return (current_page == 0) ? 'disabled' : ''
+  },
+  previous_path() {
+    var current_page = FlowRouter.getParam('page') || 0;
+    if(current_page == 0) {
+      return '';
+    }
+
+    return FlowRouter.path('search', {query: FlowRouter.getParam('query'), page: current_page - 1})
+  },
+  next_enabled() {
+    var current_page = FlowRouter.getParam('page') || 0;
+    return (current_page == Math.ceil(Counts.get('print_search_count') / PAGE_COUNT) - 1) ? 'disabled' : ''
+  },
+  next_path() {
+    var current_page = FlowRouter.getParam('page') || 0;
+    if(current_page == (Math.ceil(Counts.get('print_search_count') / PAGE_COUNT) - 1)) {
+      return '';
+    }
+
+    return FlowRouter.path('search', {query: FlowRouter.getParam('query'), page: parseInt(current_page) + 1})
   }
 });

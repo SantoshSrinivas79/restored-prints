@@ -6,12 +6,24 @@ if (Meteor.isServer) {
   });
 
   Meteor.publish('prints_home_page', function() {
-    return Prints.find({}, {fields: {is_enabled: false}, limit: 4});
+    return Prints.find(
+        {},
+        {fields: {is_enabled: false}, limit: 4});
   });
 
-  Meteor.publish('print_search', function () {
+  Meteor.publish('print_search', function (parameters) {
+    Counts.publish(this, 'print_search_count', Prints.find({
+      $or: [
+        {'title': {$regex: parameters.query, $options: 'i'}}
+      ],
+      is_enabled: true
+    }));
+
     return Prints.find(
       {
+        $or: [
+          {'title': {$regex: parameters.query, $options: 'i'}}
+        ],
         is_enabled: true
       },
       {
@@ -27,9 +39,10 @@ if (Meteor.isServer) {
           description: 1,
           tags: 1,
           image_url: 1,
-        }
-      },
-      {}
+        },
+        skip: parameters.page * parameters.count,
+        limit: parameters.count
+      }
     );
   });
 
