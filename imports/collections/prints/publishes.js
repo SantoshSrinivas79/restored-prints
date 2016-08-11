@@ -2,7 +2,7 @@ import { Prints } from './model';
 
 if (Meteor.isServer) {
   Meteor.publish('prints', function() {
-    return Prints.find({is_enabled: true});
+    return Prints.find({is_enabled: true}, {sort: {date_added: 1}});
   });
 
   Meteor.publish('prints_home_page', function() {
