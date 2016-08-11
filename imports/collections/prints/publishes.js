@@ -46,8 +46,8 @@ if (Meteor.isServer) {
     );
   });
 
-  Meteor.publish('print_by_ref', function (ref) {
-    return Prints.find({ref: ref});
+  Meteor.publish('print_by_id', function (id) {
+    return Prints.find({_id: id});
   });
 
   ///////// ADMIN

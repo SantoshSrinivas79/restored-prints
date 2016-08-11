@@ -22,7 +22,7 @@ Template.search.onCreated(function() {
 var chunkSearchResults = function(results) {
   var chunks = [];
   while (results.length > CHUNK_SIZE) {
-    chunks.push({ row: results.slice(0, CHUNK_SIZE)});
+    chunks.push({row: results.slice(0, CHUNK_SIZE)});
     results = results.slice(CHUNK_SIZE);
   }
   chunks.push({row: results});

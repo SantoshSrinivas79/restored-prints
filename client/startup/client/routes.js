@@ -20,10 +20,6 @@ FlowRouter.route('/search/:query?/:page?', {
 
 FlowRouter.route('/print/:id', {
   name: 'print',
-  subscriptions(params) {
-    this.register('print', Meteor.subscribe('print_by_ref', params.id));
-    this.register('publications', Meteor.subscribe('publications'));
-  },
   action() {
     BlazeLayout.render('layout', { main: "print" });
   }

@@ -15,14 +15,13 @@
     </div>
     <div class="col m4">
       {{> print_prices}}
-      {{> print_publication}}
+      {{> print_publication publication}}
     </div>
     {{/with}}
   </div>
 </template>
 
 <template name="print_publication">
-  {{#with publication_obj}}
   <div class="card">
     <div class="card-content">
       <span class="card-title">Publication</span>
@@ -42,7 +41,6 @@
       </table>
     </div>
   </div>
-  {{/with}}
 </template>
 
 <template name="print_prices">

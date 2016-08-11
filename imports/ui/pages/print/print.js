@@ -4,15 +4,15 @@ import { Publications } from '../../../collections/publications/model';
 
 import './print.html';
 
+Template.print.onCreated(function() {
+  var self = this;
+  self.autorun(() => {
+    self.subscribe('print_by_id', FlowRouter.getParam('id'));
+  })
+});
+
 Template.print.helpers({
   print() {
     return Prints.findOne({});
-  }
-});
-
-Template.print_publication.helpers({
-  publication_obj() {
-    var print = Prints.findOne({});
-    return Publications.findOne({_id: print.publication});
   }
 });
