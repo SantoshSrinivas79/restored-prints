@@ -7,7 +7,7 @@ if (Meteor.isServer) {
 
   Meteor.publish('prints_home_page', function() {
     return Prints.find(
-        {},
+        {is_enabled: true},
         {fields: {is_enabled: false}, limit: 4});
   });
 
@@ -47,14 +47,14 @@ if (Meteor.isServer) {
   });
 
   Meteor.publish('print_by_id', function (id) {
-    return Prints.find({_id: id});
+    return Prints.find({_id: id, is_enabled: true}, {fields: {is_enabled: false}});
   });
 
   ///////// ADMIN
   Meteor.publish('prints_admin', function () {
-    // if (! this.userId) {
-    //   throw new Meteor.Error('not-authorized');
-    // }
+    if (!this.userId) {
+      throw new Meteor.Error('not-authorized');
+    }
 
     return Prints.find({});
   });

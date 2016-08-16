@@ -13,12 +13,22 @@ adminRoutes.route('/', {
   name: 'login',
   action: function() {
     BlazeLayout.render("admin_login");
-  }
+  },
+  triggersEnter: [function(context, redirect) {
+    if(Meteor.userId()) {
+      redirect('/admin/prints');
+    }
+  }]
 });
 
 var printRoutes = adminRoutes.group({
   prefix: '/prints',
-  name: 'prints'
+  name: 'prints',
+  triggersEnter: [function(context, redirect) {
+    if(!Meteor.userId()) {
+      redirect('login');
+    }
+  }]
 });
 
 printRoutes.route('/', {

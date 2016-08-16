@@ -2,17 +2,12 @@ import './list.html';
 import './list.scss';
 
 import { Prints } from '../../../../../collections/prints/model';
-import { Publications } from '../../../../../collections/publications/model';
 import '../../../../components/breadcrumb/breadcrumb';
 
 var formatTimestamp = function(value) {
   return moment.unix(value).format('HH:mm - Do MMMM YYYY');
 };
 
-var getPublicationTitle = function(publicationId) {
-  return Publications.findOne({_id: publicationId}).title;
-};
-//
 // Template.admin_prints_list_published.events({
 //   'click #is_published'(event) {
 //     console.log(event);
@@ -34,7 +29,7 @@ Template.admin_prints_list.helpers({
         {key: 'ref', label: 'Ref'},
         {key: 'title', label: 'Title'},
         {key: 'image', label: 'Image', tmpl: Template.admin_prints_list_image, sortable: false},
-        {key: 'publication', label: 'Publication', fn: getPublicationTitle},
+        {key: 'publication.title', label: 'Publication'},
         {key: 'date_added', label: 'Added', sortOrder: 0, sortDirection: 'descending', fn: formatTimestamp},
         {label: 'Actions', tmpl: Template.admin_list_row_actions, sortable: false},
       ]
@@ -50,6 +45,8 @@ Template.admin_prints_list_published.onCreated(function() {
 Template.admin_prints_list_published.events({
   'click .checkbox'(event, template) {
     // event.preventDefault();
+
+    console.log(event);
 
     console.log(Template.instance().data._id);
     console.log(template.data._id);

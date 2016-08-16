@@ -12,8 +12,12 @@ Template.admin_login.events({
     console.log(username);
     console.log(password);
 
-    var result = Meteor.call('auth.login', username, password);
-
-    console.log(this.userId);
+    Meteor.loginWithPassword(username, password, function(err) {
+      if(err) {
+        console.log(err);
+      } else {
+        FlowRouter.go("/admin/prints/");
+      }
+    });
   }
 });

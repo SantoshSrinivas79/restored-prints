@@ -1,5 +1,4 @@
 import { Meteor } from 'meteor/meteor';
-import { check } from 'meteor/check';
 
 import Fixtures from './db';
 
@@ -25,17 +24,8 @@ Meteor.startup(() => {
   Fixtures.runFixtures();
 
   if (Meteor.isServer) {
-    Meteor.methods({
-      'auth.login'(username, password) {
-        check(username, String);
-        check(password, String);
-
-        if(username !== CONFIG.AUTH.USERNAME || password !== CONFIG.AUTH.PASSWORD) {
-          throw new Meteor.Error('not-authorized');
-        }
-
-        this.setUserId(1);
-      }
+    Accounts.config({
+      forbidClientAccountCreation : true
     });
   }
 });

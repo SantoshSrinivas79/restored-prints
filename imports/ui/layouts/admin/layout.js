@@ -7,3 +7,11 @@ Template.admin_layout.onRendered(function() {
     $('#admin_layout_navigation').collapsible();
   });
 });
+
+Template.admin_layout.events({
+  'click #logout'() {
+    Meteor.logout(function() {
+      FlowRouter.go('/admin');
+    })
+  }
+});

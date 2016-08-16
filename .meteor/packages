@@ -21,7 +21,6 @@ kadira:flow-router
 kadira:blaze-layout
 aslagle:reactive-table
 momentjs:moment
-accounts-ui@1.1.9
 accounts-password@1.2.12
 fourseven:scss
 meteorhacks:fast-render

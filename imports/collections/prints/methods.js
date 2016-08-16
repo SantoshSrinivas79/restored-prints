@@ -5,6 +5,10 @@ import { Publications } from '../publications/model';
 if (Meteor.isServer) {
   Meteor.methods({
     'prints.insert'(print) {
+      if (!Meteor.userId()) {
+        throw new Meteor.Error('not-authorized');
+      }
+
       check(print, Object);
       check(print.ref, String);
       check(print.publication, String);
@@ -28,28 +32,28 @@ if (Meteor.isServer) {
       });
     },
     'prints.remove'(printId) {
-      check(printId, String);
-
-      if (!this.userId) {
+      if (!Meteor.userId()) {
         throw new Meteor.Error('not-authorized');
       }
+
+      check(printId, String);
 
       Prints.remove({id: printId});
     },
     'prints.update'(printId, print) {
-      check(printId, String);
-      check(print, Object);
-
-      if (!this.userId) {
+      if (!Meteor.userId()) {
         throw new Meteor.Error('not-authorized');
       }
+
+      check(printId, String);
+      check(print, Object);
 
       Prints.update(printId, print);
     },
     'prints.toggle-publish'(printId, enabled) {
-      // if (!this.userId) {
-      //   throw new Meteor.Error('not-authorized');
-      // }
+      if (!Meteor.userId()) {
+        throw new Meteor.Error('not-authorized');
+      }
 
       Prints.update(printId, {$set: { is_enabled: enabled }});
     }

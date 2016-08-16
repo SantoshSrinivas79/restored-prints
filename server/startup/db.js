@@ -10,22 +10,11 @@ class Fixtures {
     Publications.remove({});
     Categories.remove({});
     Artists.remove({});
+    Meteor.users.remove({});
   };
 
   buildIndexes() {
-    // Prints._ensureIndex({
-    //   title: 'text',
-    //   latin_title_historic: 'text',
-    //   latin_title_modern: 'text',
-    //   "publication.title": 'text',
-    //   "publication.authors": 'text',
-    //   lithograph_by: 'text',
-    //   painting_by: 'text',
-    //   description: 'text',
-    //   tags: 'text'
-    // }, {
-    //   name: 'print_search_index'
-    // });
+
   };
 
   runFixtures() {
@@ -78,6 +67,12 @@ class Fixtures {
 
     Artists.insert({title: 'John Gould'});
     Artists.insert({title: 'Elizabeth Gould'});
+
+    Accounts.createUser({
+      username: 'admin',
+      email: 'tomhalley89@gmail.com',
+      password: 'password'
+    })
   }
 }
 
