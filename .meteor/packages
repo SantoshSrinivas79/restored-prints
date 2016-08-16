@@ -30,3 +30,6 @@ jimmiebtlr:slingshot-cloudinary
 materialize:materialize@=0.97.6
 session
 tmeasday:publish-counts
+ongoworks:security
+aldeed:collection2
+gildaspk:autoform-materialize

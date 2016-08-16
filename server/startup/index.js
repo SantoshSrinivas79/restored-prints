@@ -22,6 +22,7 @@ Meteor.startup(() => {
   Fixtures.cleanDatabase();
   Fixtures.buildIndexes();
   Fixtures.runFixtures();
+  Fixtures.setSecurity();
 
   if (Meteor.isServer) {
     Accounts.config({

@@ -17,6 +17,13 @@ class Fixtures {
 
   };
 
+  setSecurity() {
+    Prints.permit(['insert', 'update']).ifLoggedIn();
+    Publications.permit(['insert', 'update']).ifLoggedIn();
+    Categories.permit(['insert', 'update']).ifLoggedIn();
+    Artists.permit(['insert', 'update']).ifLoggedIn();
+  };
+
   runFixtures() {
     var publication = Publications.insert({
       title: 'The Birds of Europe',
