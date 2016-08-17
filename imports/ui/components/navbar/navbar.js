@@ -1,6 +1,8 @@
+import './navbar.html';
+import './navbar.scss';
+
 import { Categories } from '../../../collections/categories/model';
 import { CONSTANTS } from '../../../common/constants';
-import './navbar.html';
 
 Template.navbar.onRendered(function() {
   this.autorun(() => {
@@ -17,5 +19,13 @@ Template.navbar.helpers({
   },
   category_art() {
     return Categories.find({type: CONSTANTS.CATEGORIES.ART});
+  }
+});
+
+Template.navbar.events({
+  'submit #search_form'(event) {
+    event.preventDefault();
+    var query = event.target.query.value;
+    FlowRouter.go('/search/' + query);
   }
 });
