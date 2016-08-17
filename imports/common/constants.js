@@ -1,4 +1,4 @@
-export const CONSTANTS = {
+export default CONSTANTS = {
   SEARCH_QUERY_KEYS: {
     FULL_TEXT: 'ft',
     CATEGORY: 'c',

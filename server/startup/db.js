@@ -2,7 +2,7 @@ import { Prints } from '../../imports/collections/prints/model';
 import { Publications } from '../../imports/collections/publications/model';
 import { Categories } from '../../imports/collections/categories/model';
 import { Artists } from '../../imports/collections/artists/model';
-import { CONSTANTS } from '../../imports/common/constants';
+import Constants from '../../imports/common/constants';
 
 class Fixtures {
   cleanDatabase() {
@@ -62,15 +62,15 @@ class Fixtures {
       });
     }
 
-    Categories.insert({title: 'Birds', type: CONSTANTS.CATEGORIES.WILDLIFE });
-    Categories.insert({title: 'Mammals', type: CONSTANTS.CATEGORIES.WILDLIFE });
-    Categories.insert({title: 'Reptiles', type: CONSTANTS.CATEGORIES.WILDLIFE });
-    Categories.insert({title: 'Fish', type: CONSTANTS.CATEGORIES.WILDLIFE });
-    Categories.insert({title: 'Flora', type: CONSTANTS.CATEGORIES.WILDLIFE });
-    Categories.insert({title: 'Fungi', type: CONSTANTS.CATEGORIES.WILDLIFE });
+    Categories.insert({title: 'Birds', type: Constants.CATEGORIES.WILDLIFE });
+    Categories.insert({title: 'Mammals', type: Constants.CATEGORIES.WILDLIFE });
+    Categories.insert({title: 'Reptiles', type: Constants.CATEGORIES.WILDLIFE });
+    Categories.insert({title: 'Fish', type: Constants.CATEGORIES.WILDLIFE });
+    Categories.insert({title: 'Flora', type: Constants.CATEGORIES.WILDLIFE });
+    Categories.insert({title: 'Fungi', type: Constants.CATEGORIES.WILDLIFE });
 
-    Categories.insert({title: 'American', type: CONSTANTS.CATEGORIES.ART });
-    Categories.insert({title: 'European', type: CONSTANTS.CATEGORIES.ART });
+    Categories.insert({title: 'American', type: Constants.CATEGORIES.ART });
+    Categories.insert({title: 'European', type: Constants.CATEGORIES.ART });
 
     Artists.insert({title: 'John Gould'});
     Artists.insert({title: 'Elizabeth Gould'});
