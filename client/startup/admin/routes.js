@@ -54,7 +54,7 @@ printRoutes.route('/create', {
   }
 });
 
-var categoriesRoutes = FlowRouter.group({
+var categoriesRoutes = adminRoutes.group({
   prefix: '/categories',
   name: 'categories'
 });
