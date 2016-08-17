@@ -1,9 +1,9 @@
-import '../../../../imports/ui/layouts/admin/layout';
-import '../../../../imports/ui/pages/admin/login/login';
-import '../../../../imports/ui/pages/admin/prints/list/list';
-import '../../../../imports/ui/pages/admin/prints/edit/edit';
-import '../../../../imports/ui/pages/admin/prints/create/create';
-import '../../../../imports/ui/pages/admin/categories/create/create';
+import '../../../imports/ui/layouts/admin/layout';
+import '../../../imports/ui/pages/admin/login/login';
+import '../../../imports/ui/pages/admin/prints/list/list';
+import '../../../imports/ui/pages/admin/prints/edit/edit';
+import '../../../imports/ui/pages/admin/prints/create/create';
+import '../../../imports/ui/pages/admin/categories/create/create';
 
 var adminRoutes = FlowRouter.group({
   prefix: '/admin',

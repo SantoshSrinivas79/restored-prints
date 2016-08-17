@@ -28,5 +28,8 @@ Template.navbar.events({
     event.preventDefault();
     var query = event.target.query.value;
     FlowRouter.go('/search/' + query);
+  },
+  'click #search_form .close'(event) {
+    event.target.parentElement.children[0].value = "";
   }
 });
