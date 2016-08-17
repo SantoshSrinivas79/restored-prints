@@ -17,4 +17,4 @@ categories.attachSchema(new SimpleSchema({
   }
 }));
 
-export const Categories = categories;
+export default Categories = categories;

@@ -1,4 +1,4 @@
-import { Publications } from './model';
+import Publications from './model';
 
 if (Meteor.isServer) {
   Meteor.publish('publications', function () {

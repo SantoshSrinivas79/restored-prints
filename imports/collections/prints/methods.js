@@ -1,6 +1,6 @@
 import { check } from 'meteor/check';
-import { Prints } from './model';
-import { Publications } from '../publications/model';
+import Prints from './model';
+import Publications from '../publications/model';
 
 if (Meteor.isServer) {
   Meteor.methods({

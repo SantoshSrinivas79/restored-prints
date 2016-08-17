@@ -7,4 +7,4 @@ class imageUpload {
   }
 }
 
-export const ImageUpload = new imageUpload();
+export default ImageUpload = new imageUpload();

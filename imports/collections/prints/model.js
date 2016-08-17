@@ -66,4 +66,4 @@ prints.attachSchema(new SimpleSchema({
   }
 }));
 
-export const Prints = prints;
+export default Prints = prints;

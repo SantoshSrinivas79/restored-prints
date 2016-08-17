@@ -1,7 +1,7 @@
-import { Prints } from '../../imports/collections/prints/model';
-import { Publications } from '../../imports/collections/publications/model';
-import { Categories } from '../../imports/collections/categories/model';
-import { Artists } from '../../imports/collections/artists/model';
+import Prints from '../../imports/collections/prints/model';
+import Publications from '../../imports/collections/publications/model';
+import Categories from '../../imports/collections/categories/model';
+import Artists from '../../imports/collections/artists/model';
 import Constants from '../../imports/common/constants';
 
 class Fixtures {

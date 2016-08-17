@@ -1,7 +1,7 @@
 import './navbar.html';
 import './navbar.scss';
 
-import { Categories } from '../../../collections/categories/model';
+import Categories from '../../../collections/categories/model';
 import Constants from '../../../common/constants';
 import './navbar.html';
 

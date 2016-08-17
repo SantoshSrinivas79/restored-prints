@@ -1,8 +1,8 @@
 import './create.html';
 
-import { Publications } from '../../../../../collections/publications/model';
-import { Artists } from '../../../../../collections/artists/model';
-import { ImageUpload } from '../../../../../common/image_upload';
+import Publications from '../../../../../collections/publications/model';
+import Artists from '../../../../../collections/artists/model';
+import ImageUpload from '../../../../../common/image_upload';
 
 var priceArray = new ReactiveArray([{}]);
 var uploadStatus = new ReactiveVar(false);

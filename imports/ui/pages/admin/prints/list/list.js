@@ -1,7 +1,7 @@
 import './list.html';
 import './list.scss';
 
-import { Prints } from '../../../../../collections/prints/model';
+import Prints from '../../../../../collections/prints/model';
 import '../../../../components/breadcrumb/breadcrumb';
 
 var formatTimestamp = function(value) {

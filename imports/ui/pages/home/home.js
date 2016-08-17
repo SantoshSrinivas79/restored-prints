@@ -1,5 +1,5 @@
 import "./home.html";
-import { Prints } from '../../../collections/prints/model';
+import Prints from '../../../collections/prints/model';
 
 Template.home.onCreated(function() {
   var self = this;

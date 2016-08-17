@@ -1,4 +1,4 @@
-import { Prints } from './model';
+import Prints from './model';
 
 if (Meteor.isServer) {
   Meteor.publish('prints', function() {

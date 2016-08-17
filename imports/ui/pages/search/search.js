@@ -2,8 +2,8 @@ import "./search.html";
 import "./search.scss"
 
 import { Template } from 'meteor/templating';
-import { Prints } from '../../../collections/prints/model';
-import { Publications } from '../../../collections/publications/model';
+import Prints from '../../../collections/prints/model';
+import Publications from '../../../collections/publications/model';
 
 const CHUNK_SIZE = 3;
 const PAGE_COUNT = 3;

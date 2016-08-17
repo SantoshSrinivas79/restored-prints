@@ -1,5 +1,5 @@
 import { Template } from 'meteor/templating';
-import { Prints } from '../../../collections/prints/model';
+import Prints from '../../../collections/prints/model';
 
 import './print.html';
 

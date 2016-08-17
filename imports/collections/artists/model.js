@@ -9,4 +9,4 @@ artists.attachSchema(new SimpleSchema({
   }
 }));
 
-export const Artists = artists;
+export default Artists = artists;
