@@ -23,13 +23,3 @@ Template.layout.onCreated(function() {
     self.subscribe('categories');
   })
 });
-
-Template.search_bar.events({
-  'submit #search_form'(event) {
-    event.preventDefault();
-
-    var query = event.target.query.value;
-
-    FlowRouter.go('/search/' + query);
-  }
-});
