@@ -1,0 +1,18 @@
+<template name="admin_categories_list">
+  <div class="row">
+    <div class="col s8">
+      <div class="card">
+        <div class="card-title">
+          {{> breadcrumb}}
+        </div>
+        <div class="card-content">
+          {{> reactiveTable settings=settings}}
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="admin_create_list_row_actions">
+  <a href="">Edit</a>
+</template>
