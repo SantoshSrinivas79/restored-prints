@@ -8,12 +8,6 @@ var formatTimestamp = function(value) {
   return moment.unix(value).format('HH:mm - Do MMMM YYYY');
 };
 
-// Template.admin_prints_list_published.events({
-//   'click #is_published'(event) {
-//     console.log(event);
-//   }
-// });
-
 Template.admin_prints_list.helpers({
   settings: function() {
     return {
@@ -37,28 +31,14 @@ Template.admin_prints_list.helpers({
   }
 });
 
-
-Template.admin_prints_list_published.onCreated(function() {
-  this.checked = new ReactiveVar(this.data.is_enabled);
-});
-
 Template.admin_prints_list_published.events({
   'click .checkbox'(event, template) {
-    // event.preventDefault();
-
-    console.log(event);
-
-    console.log(Template.instance().data._id);
-    console.log(template.data._id);
-
-    // Template.instance().checked.set( !Template.instance().checked.get() );
-
-    // Meteor.call('prints.toggle-publish', this._id, !this.is_enabled);
+    Meteor.call('prints.toggle-publish', template.data._id, event.target.checked)
   }
 });
 
 Template.admin_prints_list_published.helpers({
   is_published() {
-    return Template.instance().checked.get() ? "checked" : "";
+    return this.is_enabled ? "checked" : "";
   }
 });

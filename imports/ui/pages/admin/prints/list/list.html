@@ -14,11 +14,9 @@
 </template>
 
 <template name="admin_list_row_actions">
-  <a href="/admin/prints/edit/{{ref}}">Edit</a>
+  <a href="/admin/prints/edit/{{_id}}">Edit</a>
   &nbsp;|&nbsp;
-  <a href="">Delete</a>
-  &nbsp;|&nbsp;
-  <a href="/print/{{ref}}" target="_blank">View Live <i class="tiny material-icons">tab</i></a>
+  <a href="/print/{{_id}}" target="_blank">View Live <i class="tiny material-icons">tab</i></a>
 </template>
 
 <template name="admin_prints_list_image">
@@ -30,8 +28,8 @@
 <template name="admin_prints_list_published">
   <form>
     <p class="center">
-      <input type="checkbox" class="filled-in checkbox" id="is_published_{{ref}}" {{is_published}} />
-      <label for="is_published_{{ref}}"></label>
+      <input type="checkbox" class="filled-in checkbox" id="is_published_{{_id}}" {{is_published}} />
+      <label for="is_published_{{_id}}"></label>
     </p>
   </form>
 </template>
