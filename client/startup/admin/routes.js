@@ -35,10 +35,6 @@ var printRoutes = adminRoutes.group({
 
 printRoutes.route('/', {
   name: 'list',
-  subscriptions: function() {
-    this.register('admin_prints', Meteor.subscribe('prints_admin'));
-    this.register('admin_publications', Meteor.subscribe('publications'));
-  },
   action: function() {
     BlazeLayout.render('admin_layout', { main: "admin_prints_list" });
   }
@@ -46,10 +42,6 @@ printRoutes.route('/', {
 
 printRoutes.route('/create', {
   name: 'create',
-  subscriptions: function() {
-    this.register('admin_artists', Meteor.subscribe('artists'));
-    this.register('admin_publications', Meteor.subscribe('publications'));
-  },
   action: function() {
     BlazeLayout.render('admin_layout', { main: "admin_prints_create" });
   }

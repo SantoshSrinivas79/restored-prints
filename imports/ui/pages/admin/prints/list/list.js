@@ -8,6 +8,14 @@ var formatTimestamp = function(value) {
   return moment.unix(value).format('HH:mm - Do MMMM YYYY');
 };
 
+Template.admin_prints_list.onRendered(function() {
+  var self = this;
+  self.autorun(() => {
+    self.subscribe('prints_admin');
+    self.subscribe('publications');
+  });
+});
+
 Template.admin_prints_list.helpers({
   settings: function() {
     return {

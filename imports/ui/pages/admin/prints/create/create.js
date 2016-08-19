@@ -21,10 +21,21 @@ var displayPreviewImage = function(fileField) {
   }
 };
 
-Template.admin_prints_create_form.onRendered(function() {
-  this.autorun(() => {
-    $('select').material_select();
+Template.admin_prints_create.onRendered(function() {
+  var self = this;
+  self.autorun(() => {
+    self.subscribe('artists', function() {
+      $('select').material_select();
+    });
+    self.subscribe('publications', function() {
+      $('select').material_select();
+    });
+  });
+});
 
+Template.admin_prints_create_form.onRendered(function() {
+  var self = this;
+  self.autorun(() => {
     $('.file-field input[type="file"]').change(function() {
       displayPreviewImage($('.file-field'));
     });

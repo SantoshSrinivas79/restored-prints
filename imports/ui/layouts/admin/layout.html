@@ -48,7 +48,7 @@
         </div>
         <div class="col s10">
           <div class="row">
-            {{#if isReady}}
+            {{#if Template.subscriptionsReady}}
               {{> Template.dynamic template=main}}
             {{else}}
               {{> preloader}}
