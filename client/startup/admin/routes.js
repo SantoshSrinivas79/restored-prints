@@ -24,7 +24,7 @@ adminRoutes.route('/', {
   }]
 });
 
-var printRoutes = adminRoutes.group({
+adminRoutes.group({
   prefix: '/prints',
   name: 'prints',
   triggersEnter: [function(context, redirect) {
@@ -32,44 +32,44 @@ var printRoutes = adminRoutes.group({
       redirect('login');
     }
   }]
-});
-
-printRoutes.route('/', {
+}).route('/', {
   name: 'list',
   action: function() {
     BlazeLayout.render('admin_layout', { main: "admin_prints_list" });
   }
-});
-
-printRoutes.route('/create', {
+}).route('/create', {
   name: 'create',
   action: function() {
     BlazeLayout.render('admin_layout', { main: "admin_prints_create" });
   }
 });
 
-var categoriesRoutes = adminRoutes.group({
+adminRoutes.group({
   prefix: '/categories',
   name: 'categories'
-});
-
-categoriesRoutes.route('/', {
+}).route('/', {
   name: 'list',
   action: function() {
-    BlazeLayout.render('admin_layout', { main: "admin_categories_list"})
+    BlazeLayout.render('admin_layout', { main: "admin_categories_list" })
   }
-});
-
-categoriesRoutes.route('/create', {
+}).route('/create', {
   name: 'create',
   action: function() {
-    BlazeLayout.render('admin_layout', { main: "admin_categories_create"})
+    BlazeLayout.render('admin_layout', { main: "admin_categories_create" })
+  }
+}).route('/edit/:id', {
+  name: 'edit',
+  action: function() {
+    BlazeLayout.render('admin_layout', { main: "admin_categories_edit" })
   }
 });
 
-categoriesRoutes.route('/edit/:id', {
-  name: 'edit',
+adminRoutes.group({
+  prefix: '/publications',
+  name: 'publications'
+}).route('/', {
+  name: 'list',
   action: function() {
-    BlazeLayout.render('admin_layout', { main: "admin_categories_edit"})
+    BlazeLayout.render('admin_layout', { main: "admin_publications_list" })
   }
-});
+})
