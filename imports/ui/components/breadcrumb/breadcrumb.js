@@ -10,7 +10,7 @@ var upperCaseFirst = function(string) {
 
 Template.breadcrumb.helpers({
   parent_route_path() {
-    return getCurrentRoute().group.prefix;
+    return getCurrentRoute().group.prefix + '/';
   },
   parent_route_name() {
     var route = getCurrentRoute().group.name;

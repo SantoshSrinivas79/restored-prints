@@ -3,8 +3,9 @@ import '../../../imports/ui/pages/admin/login/login';
 import '../../../imports/ui/pages/admin/prints/list/list';
 import '../../../imports/ui/pages/admin/prints/edit/edit';
 import '../../../imports/ui/pages/admin/prints/create/create';
-import '../../../imports/ui/pages/admin/categories/create/create';
 import '../../../imports/ui/pages/admin/categories/list/list';
+import '../../../imports/ui/pages/admin/categories/edit/edit';
+import '../../../imports/ui/pages/admin/categories/create/create';
 
 var adminRoutes = FlowRouter.group({
   prefix: '/admin',
@@ -63,5 +64,12 @@ categoriesRoutes.route('/create', {
   name: 'create',
   action: function() {
     BlazeLayout.render('admin_layout', { main: "admin_categories_create"})
+  }
+});
+
+categoriesRoutes.route('/edit/:id', {
+  name: 'edit',
+  action: function() {
+    BlazeLayout.render('admin_layout', { main: "admin_categories_edit"})
   }
 });

@@ -1,0 +1,12 @@
+<template name="admin_categories_edit">
+  <div class="row">
+    <div class="card">
+      <div class="card-title">
+        {{> breadcrumb}}
+      </div>
+      <div class="card-content">
+        {{> quickForm collection="Categories" doc=category id="updateCategoryForm" type="update"}}
+      </div>
+    </div>
+  </div>
+</template>
