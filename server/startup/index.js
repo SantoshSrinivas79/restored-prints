@@ -20,7 +20,6 @@ import '../../imports/collections/publications/publishes';
 
 Meteor.startup(() => {
   Fixtures.cleanDatabase();
-  Fixtures.buildIndexes();
   Fixtures.runFixtures();
   Fixtures.setSecurity();
 

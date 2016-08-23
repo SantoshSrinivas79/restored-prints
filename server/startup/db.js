@@ -13,10 +13,6 @@ class Fixtures {
     Meteor.users.remove({});
   };
 
-  buildIndexes() {
-
-  };
-
   setSecurity() {
     Prints.permit(['insert', 'update']).ifLoggedIn();
     Publications.permit(['insert', 'update']).ifLoggedIn();

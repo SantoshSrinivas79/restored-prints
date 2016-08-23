@@ -20,7 +20,6 @@ Template.admin_artists_list.helpers({
       showNavigation: 'never',
       fields: [
         {key: 'title', label: 'Title'},
-        {key: 'type', label: 'Type'},
         {label: 'Actions', tmpl: Template.admin_create_list_row_actions, sortable: false},
       ]
     };
