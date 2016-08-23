@@ -6,6 +6,8 @@ import '../../../imports/ui/pages/admin/prints/create/create';
 import '../../../imports/ui/pages/admin/categories/list/list';
 import '../../../imports/ui/pages/admin/categories/edit/edit';
 import '../../../imports/ui/pages/admin/categories/create/create';
+import '../../../imports/ui/pages/admin/publications/list/list';
+import '../../../imports/ui/pages/admin/publications/create/create';
 
 var adminRoutes = FlowRouter.group({
   prefix: '/admin',
@@ -24,7 +26,7 @@ adminRoutes.route('/', {
   }]
 });
 
-adminRoutes.group({
+var printsRoutes = adminRoutes.group({
   prefix: '/prints',
   name: 'prints',
   triggersEnter: [function(context, redirect) {
@@ -32,44 +34,63 @@ adminRoutes.group({
       redirect('login');
     }
   }]
-}).route('/', {
+});
+
+printsRoutes.route('/', {
   name: 'list',
   action: function() {
     BlazeLayout.render('admin_layout', { main: "admin_prints_list" });
   }
-}).route('/create', {
+});
+
+printsRoutes.route('/create', {
   name: 'create',
   action: function() {
     BlazeLayout.render('admin_layout', { main: "admin_prints_create" });
   }
 });
 
-adminRoutes.group({
+var categoryRoutes = adminRoutes.group({
   prefix: '/categories',
   name: 'categories'
-}).route('/', {
+});
+
+categoryRoutes.route('/', {
   name: 'list',
   action: function() {
     BlazeLayout.render('admin_layout', { main: "admin_categories_list" })
   }
-}).route('/create', {
+});
+
+categoryRoutes.route('/create', {
   name: 'create',
   action: function() {
     BlazeLayout.render('admin_layout', { main: "admin_categories_create" })
   }
-}).route('/edit/:id', {
+});
+
+categoryRoutes.route('/edit/:id', {
   name: 'edit',
   action: function() {
     BlazeLayout.render('admin_layout', { main: "admin_categories_edit" })
   }
 });
 
-adminRoutes.group({
+var publicationRoutes = adminRoutes.group({
   prefix: '/publications',
   name: 'publications'
-}).route('/', {
+});
+
+publicationRoutes.route('/', {
   name: 'list',
   action: function() {
     BlazeLayout.render('admin_layout', { main: "admin_publications_list" })
   }
-})
+});
+
+publicationRoutes.route('/create', {
+  name: 'create',
+  action: function() {
+    BlazeLayout.render('admin_layout', { main: "admin_publications_create" })
+  }
+});
