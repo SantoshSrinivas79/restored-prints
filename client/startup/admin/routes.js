@@ -9,6 +9,9 @@ import '../../../imports/ui/pages/admin/categories/create/create';
 import '../../../imports/ui/pages/admin/publications/list/list';
 import '../../../imports/ui/pages/admin/publications/edit/edit';
 import '../../../imports/ui/pages/admin/publications/create/create';
+import '../../../imports/ui/pages/admin/artists/list/list';
+import '../../../imports/ui/pages/admin/artists/edit/edit';
+import '../../../imports/ui/pages/admin/artists/create/create';
 
 var adminRoutes = FlowRouter.group({
   prefix: '/admin',
@@ -100,5 +103,31 @@ publicationRoutes.route('/edit/:id', {
   name: 'edit',
   action: function() {
     BlazeLayout.render('admin_layout', { main: "admin_publications_edit" })
+  }
+});
+
+var artistGroup = adminRoutes.group({
+  prefix: '/artists',
+  name: 'artists'
+});
+
+artistGroup.route('/', {
+  name: 'list',
+  action: function() {
+    BlazeLayout.render('admin_layout', { main: "admin_artists_list" })
+  }
+});
+
+artistGroup.route('/create', {
+  name: 'create',
+  action: function() {
+    BlazeLayout.render('admin_layout', { main: "admin_artists_create" })
+  }
+});
+
+artistGroup.route('/edit/:id', {
+  name: 'edit',
+  action: function() {
+    BlazeLayout.render('admin_layout', { main: "admin_artists_edit" })
   }
 });

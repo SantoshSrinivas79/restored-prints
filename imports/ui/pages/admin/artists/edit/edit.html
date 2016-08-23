@@ -1,0 +1,12 @@
+<template name="admin_artists_edit">
+  <div class="row">
+    <div class="card">
+      <div class="card-title">
+        {{> breadcrumb}}
+      </div>
+      <div class="card-content">
+        {{> quickForm collection="Artists" doc=artist id="updateArtistsForm" type="update"}}
+      </div>
+    </div>
+  </div>
+</template>
