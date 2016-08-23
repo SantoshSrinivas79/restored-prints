@@ -1,0 +1,12 @@
+<template name="admin_publications_edit">
+  <div class="row">
+    <div class="card">
+      <div class="card-title">
+        {{> breadcrumb}}
+      </div>
+      <div class="card-content">
+        {{> quickForm collection="Publications" doc=publication id="updatePublicationForm" type="update"}}
+      </div>
+    </div>
+  </div>
+</template>
