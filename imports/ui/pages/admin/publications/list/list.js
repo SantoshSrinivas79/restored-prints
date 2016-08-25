@@ -23,7 +23,7 @@ Template.admin_publications_list.helpers({
         {key: 'authors', label: 'Authors'},
         {key: 'first_published', label: 'First Published'},
         {key: 'last_published', label: 'Last Published'},
-        {label: 'Actions', tmpl: Template.admin_create_list_row_actions, sortable: false},
+        {label: 'Actions', tmpl: Template.admin_publications_list_row_actions, sortable: false},
       ]
     };
   }

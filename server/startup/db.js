@@ -14,10 +14,14 @@ class Fixtures {
   };
 
   setSecurity() {
-    Prints.permit(['insert', 'update']).ifLoggedIn();
-    Publications.permit(['insert', 'update']).ifLoggedIn();
-    Categories.permit(['insert', 'update']).ifLoggedIn();
-    Artists.permit(['insert', 'update']).ifLoggedIn();
+    // Prints.permit(['insert', 'update', 'remove']).ifHasRole('admin');
+    // Publications.permit(['insert', 'update', 'remove']).ifHasRole('admin');
+    // Categories.permit(['insert', 'update', 'remove']).ifHasRole('admin');
+    // Artists.permit(['insert', 'update', 'remove']).ifHasRole('admin');
+    Prints.permit(['insert', 'update', 'remove']).never();
+    Publications.permit(['insert', 'update', 'remove']).never();
+    Categories.permit(['insert', 'update', 'remove']).never();
+    Artists.permit(['insert', 'update', 'remove']).never();
   };
 
   runFixtures() {
@@ -71,11 +75,13 @@ class Fixtures {
     Artists.insert({title: 'John Gould'});
     Artists.insert({title: 'Elizabeth Gould'});
 
-    Accounts.createUser({
+    var userId = Accounts.createUser({
       username: 'admin',
       email: 'tomhalley89@gmail.com',
       password: 'password'
-    })
+    });
+
+    // Roles.addUsersToRoles(userId, ['admin']);
   }
 }
 

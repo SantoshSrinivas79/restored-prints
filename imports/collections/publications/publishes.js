@@ -5,7 +5,7 @@ if (Meteor.isServer) {
     return Publications.find({});
   });
 
-  Meteor.publish('publications_by_id', function(id) {
+  Meteor.publish('publication_by_id', function(id) {
     return Publications.find({_id: id});
   });
 }

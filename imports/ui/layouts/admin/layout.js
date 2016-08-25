@@ -15,3 +15,9 @@ Template.admin_layout.events({
     })
   }
 });
+
+AutoForm.addHooks(null, {
+  onSuccess: function() {
+    FlowRouter.go(FlowRouter.current().route.group.prefix + '/');
+  }
+});

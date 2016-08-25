@@ -21,7 +21,7 @@ Template.admin_categories_list.helpers({
       fields: [
         {key: 'title', label: 'Title'},
         {key: 'type', label: 'Type'},
-        {label: 'Actions', tmpl: Template.admin_create_list_row_actions, sortable: false},
+        {label: 'Actions', tmpl: Template.admin_categories_list_row_actions, sortable: false},
       ]
     };
   }
