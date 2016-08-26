@@ -19,11 +19,11 @@ import '../../imports/collections/publications/methods';
 import '../../imports/collections/publications/publishes';
 
 Meteor.startup(() => {
-  Fixtures.cleanDatabase();
-  Fixtures.runFixtures();
-  Fixtures.setSecurity();
-
   if (Meteor.isServer) {
+    Fixtures.cleanDatabase();
+    Fixtures.runFixtures();
+    Fixtures.setSecurity();
+
     Accounts.config({
       forbidClientAccountCreation : true
     });

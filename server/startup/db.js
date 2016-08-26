@@ -14,14 +14,10 @@ class Fixtures {
   };
 
   setSecurity() {
-    // Prints.permit(['insert', 'update', 'remove']).ifHasRole('admin');
-    // Publications.permit(['insert', 'update', 'remove']).ifHasRole('admin');
-    // Categories.permit(['insert', 'update', 'remove']).ifHasRole('admin');
-    // Artists.permit(['insert', 'update', 'remove']).ifHasRole('admin');
-    Prints.permit(['insert', 'update', 'remove']).never();
-    Publications.permit(['insert', 'update', 'remove']).never();
-    Categories.permit(['insert', 'update', 'remove']).never();
-    Artists.permit(['insert', 'update', 'remove']).never();
+    Security.permit(['insert', 'update', 'remove'])
+        .collections([Prints, Publications, Categories, Artists])
+        .ifHasRole('admin')
+        .allowInClientCode();
   };
 
   runFixtures() {
@@ -81,7 +77,7 @@ class Fixtures {
       password: 'password'
     });
 
-    // Roles.addUsersToRoles(userId, ['admin']);
+    Roles.addUsersToRoles(userId, ['admin']);
   }
 }
 
