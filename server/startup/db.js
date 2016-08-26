@@ -49,7 +49,7 @@ class Fixtures {
             price: 70.00
           }
         ],
-        tags: [
+        categories: [
           'birds', 'american'
         ],
         image_url: 'http://placehold.it/420x420',

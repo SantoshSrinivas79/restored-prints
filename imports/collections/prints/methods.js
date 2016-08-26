@@ -25,7 +25,7 @@ if (Meteor.isServer) {
         painting_by: print.painting_by,
         description: print.description,
         prices: print.prices,
-        tags: print.tags,
+        categories: print.categories,
         image_url: print.image_url,
         date_added: moment().unix(),
         is_enabled: true

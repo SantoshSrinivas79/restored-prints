@@ -28,7 +28,7 @@ Template.admin_prints_list.helpers({
       showNavigation: 'never',
       fields: [
         {key: 'is_enabled', label: 'Published', tmpl: Template.admin_prints_list_published},
-        {key: 'ref', label: 'Ref'},
+        {key: '_id', label: 'Ref'},
         {key: 'title', label: 'Title'},
         {key: 'image', label: 'Image', tmpl: Template.admin_prints_list_image, sortable: false},
         {key: 'publication.title', label: 'Publication'},

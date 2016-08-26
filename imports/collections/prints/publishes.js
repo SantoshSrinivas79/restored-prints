@@ -37,7 +37,7 @@ if (Meteor.isServer) {
           lithograph_by: 1,
           painting_by: 1,
           description: 1,
-          tags: 1,
+          categories: 1,
           image_url: 1,
         },
         skip: parameters.page * parameters.count,

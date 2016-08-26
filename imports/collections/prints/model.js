@@ -47,7 +47,7 @@ prints.attachSchema(new SimpleSchema({
     label: "Prices",
     minCount: 1
   },
-  tags: {
+  categories: {
     type: [String],
     label: "Tags"
   },
