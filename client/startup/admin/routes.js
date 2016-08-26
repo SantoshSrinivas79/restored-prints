@@ -24,7 +24,7 @@ adminRoutes.route('/', {
     BlazeLayout.render("admin_login");
   },
   triggersEnter: [function(context, redirect) {
-    if(Meteor.userId()) {
+    if(Roles.userIsInRole(Meteor.userId(), ['admin'])) {
       redirect('/admin/prints');
     }
   }]
@@ -34,7 +34,7 @@ var printsRoutes = adminRoutes.group({
   prefix: '/prints',
   name: 'prints',
   triggersEnter: [function(context, redirect) {
-    if(!Meteor.userId()) {
+    if(!Roles.userIsInRole(Meteor.userId(), ['admin'])) {
       redirect('login');
     }
   }]
