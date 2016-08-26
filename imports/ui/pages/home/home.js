@@ -4,7 +4,7 @@ import Prints from '../../../collections/prints/model';
 Template.home.onCreated(function() {
   var self = this;
   self.autorun(() => {
-    self.subscribe('prints');
+    self.subscribe('prints_home_page');
   })
 });
 

@@ -2,7 +2,6 @@ import '../../imports/ui/layouts/layout';
 import '../../imports/ui/pages/home/home';
 import '../../imports/ui/pages/print/print';
 import '../../imports/ui/pages/search/search';
-import '../../imports/ui/pages/404/404';
 
 FlowRouter.route('/', {
   name: 'home',

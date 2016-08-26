@@ -33,7 +33,7 @@ if (Meteor.isServer) {
       });
     },
     'prints.toggle-publish'(printId, enabled) {
-      if(!Security.can(userId).update(printId).for(Prints).check()) {
+      if(!Security.can(Meteor.userId()).update(printId).for(Prints).check()) {
         throw new Meteor.Error('not-authorized');
       }
 
