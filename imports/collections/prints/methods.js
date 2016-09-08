@@ -16,21 +16,9 @@ if (Meteor.isServer) {
       check(print.title, String);
       check(print.prices, Array);
 
-      Prints.insert({
-        _id: print.ref,
-        title: print.title,
-        latin_title_historic: print.latin_title_historic,
-        latin_title_modern: print.latin_title_modern,
-        publication: Publications.findOne({_id: print.publication}),
-        lithograph_by: print.lithograph_by,
-        painting_by: print.painting_by,
-        description: print.description,
-        prices: print.prices,
-        categories: print.categories,
-        image_url: print.image_url,
-        date_added: moment().unix(),
-        is_enabled: true
-      });
+      print.publication = Publications.findOne({_id: print.publication});
+      print.date_added = moment().unix();
+      print.is_enabled = true;
     },
     'prints.toggle-publish'(printId, enabled) {
       if(!Security.can(Meteor.userId()).update(printId).for(Prints).check()) {
