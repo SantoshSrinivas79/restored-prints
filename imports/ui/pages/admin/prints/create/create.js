@@ -95,9 +95,9 @@ Template.admin_prints_create.events({
     uploadStatus.set(true);
 
     var formData = getFormDataObject();
-    formData.prices = getPriceValues();
 
     uploadFiles(function(url) {
+      formData.prices = getPriceValues();
       formData.image_url = url;
 
       Meteor.call('prints.insert', formData, function() {
