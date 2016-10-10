@@ -35,7 +35,7 @@ class Fixtures {
         latin_title_historic: 'Alcedo isipda, Linn.',
         latin_title_modern: 'Alcedo atthis',
         publication: Publications.findOne({_id: publication}),
-        lithograph_by: ['John Gould', 'Elizabeth Gould'],
+        lithograph_by: [],
         painting_by: ['John Gould', 'Elizabeth Gould'],
         description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
         prices: [
@@ -68,8 +68,8 @@ class Fixtures {
     Categories.insert({title: 'American', type: Constants.CATEGORIES.ART });
     Categories.insert({title: 'European', type: Constants.CATEGORIES.ART });
 
-    Artists.insert({title: 'John Gould'});
-    Artists.insert({title: 'Elizabeth Gould'});
+    Artists.insert({name: 'John Gould'});
+    Artists.insert({name: 'Elizabeth Gould'});
 
     var userId = Accounts.createUser({
       username: 'admin',

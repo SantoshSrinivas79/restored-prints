@@ -16,6 +16,7 @@ Template.admin_layout.events({
   }
 });
 
+AutoForm.setDefaultTemplate('materialize');
 AutoForm.addHooks(null, {
   onSuccess: function() {
     FlowRouter.go(FlowRouter.current().route.group.prefix + '/');
