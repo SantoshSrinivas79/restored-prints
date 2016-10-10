@@ -30,8 +30,7 @@ materialize:materialize@=0.97.6
 session
 tmeasday:publish-counts
 aldeed:autoform
-gildaspk:autoform-materialize
 aldeed:collection2
+gildaspk:autoform-materialize
 ongoworks:security
 alanning:roles
-aldeed:autoform-select2

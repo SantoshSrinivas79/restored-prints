@@ -25,10 +25,22 @@ Template.admin_prints_create.onRendered(function() {
   var self = this;
   self.autorun(() => {
     self.subscribe('artists', function() {
-      $('select').material_select();
+      setTimeout(function() {
+        $("select.browser-default").removeClass('browser-default');
+        $("select").material_select();
+      }, 100);
     });
     self.subscribe('publications', function() {
-      $('select').material_select();
+      setTimeout(function() {
+        $("select.browser-default").removeClass('browser-default');
+        $("select").material_select();
+      }, 100);
+    });
+    self.subscribe('categories', function() {
+      setTimeout(function() {
+        $("select.browser-default").removeClass('browser-default');
+        $("select").material_select();
+      }, 100);
     });
   });
 });

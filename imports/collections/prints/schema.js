@@ -53,7 +53,6 @@ export default PrintSchema = new SimpleSchema({
     type: [Object],
     label: "Lithograph Artists",
     autoform: {
-      type: "select",
       options: function() {
         return Artists.find().map(function(a) {
           return {label: a.name, value: a._id}
@@ -64,9 +63,8 @@ export default PrintSchema = new SimpleSchema({
   },
   painting_by: {
     type: [String],
-    label: "Artists",
+    label: "Painting Artists",
     autoform: {
-      type: "select",
       options: function() {
         return Artists.find().map(function(a) {
           return {label: a.name, value: a._id}
@@ -75,23 +73,26 @@ export default PrintSchema = new SimpleSchema({
     },
     optional: true
   },
-  description: {
-    type: String,
-    label: "Description",
-    optional: true,
-    max: 1000
-  },
   categories: {
     type: [String],
     label: "Tags",
     autoform: {
-      type: "select",
       options: function() {
         return Categories.find().map(function(a) {
           return {label: a.title, value: a.title}
         })
       }
     },
+    optional: true
+  },
+  description: {
+    type: String,
+    label: "Description",
+    autoform: {
+      type: "textarea"
+    },
+    optional: true,
+    max: 1000
   },
   prices: {
     type: [PriceSchema],
@@ -105,16 +106,10 @@ export default PrintSchema = new SimpleSchema({
   },
   date_added: {
     type: Number,
-    defaultValue: moment().unix(),
-    autoform: {
-      type: "disabled"
-    }
+    defaultValue: moment().unix()
   },
   is_enabled: {
     type: Boolean,
-    defaultValue: true,
-    autoform: {
-      type: "disabled"
-    }
+    defaultValue: true
   }
 });
