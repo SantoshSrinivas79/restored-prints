@@ -6,7 +6,7 @@ import Prints from '../../../collections/prints/model';
 import Publications from '../../../collections/publications/model';
 
 const CHUNK_SIZE = 3;
-const PAGE_COUNT = 3;
+const PAGE_COUNT = 6;
 
 Template.search.onCreated(function() {
   var self = this;

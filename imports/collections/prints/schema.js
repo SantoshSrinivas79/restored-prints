@@ -31,15 +31,17 @@ export default PrintSchema = new SimpleSchema({
   latin_title_historic: {
     type: String,
     label: "Historic Latin Title",
-    max: 200
+    max: 200,
+    optional: true
   },
   latin_title_modern: {
     type: String,
     label: "Modern Latin Title",
-    max: 200
+    max: 200,
+    optional: true
   },
   publication: {
-    type: Object,
+    type: String,
     autoform: {
       type: "select",
       options: function() {
@@ -79,7 +81,7 @@ export default PrintSchema = new SimpleSchema({
     autoform: {
       options: function() {
         return Categories.find().map(function(a) {
-          return {label: a.title, value: a.title}
+          return {label: a.title, value: a._id}
         })
       }
     },
