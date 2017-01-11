@@ -2,7 +2,7 @@ import './list.html';
 import Publications from '../../../../../collections/publications/model';
 
 Template.admin_publications_list.onRendered(function() {
-  var self = this;
+  const self = this;
   self.autorun(() => {
     self.subscribe('publications');
   });

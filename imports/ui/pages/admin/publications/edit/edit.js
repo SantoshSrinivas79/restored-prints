@@ -2,7 +2,7 @@ import './edit.html';
 import Publications from '../../../../../collections/publications/model';
 
 Template.admin_publications_edit.onRendered(function() {
-  var self = this;
+  const self = this;
   self.autorun(() => {
     self.subscribe('publication_by_id', FlowRouter.getParam("id"));
 

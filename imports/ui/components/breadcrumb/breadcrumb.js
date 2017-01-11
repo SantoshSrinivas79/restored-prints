@@ -1,19 +1,20 @@
 import './breadcrumb.html';
+import FlowRouter from 'meteor/kadira:flow-router';
 
-var getCurrentRoute = function() {
+function getCurrentRoute() {
   return FlowRouter.current().route;
-};
+}
 
-var upperCaseFirst = function(string) {
+function upperCaseFirst(string) {
   return string.charAt(0).toUpperCase() + string.slice(1)
-};
+}
 
 Template.breadcrumb.helpers({
   parent_route_path() {
     return getCurrentRoute().group.prefix + '/';
   },
   parent_route_name() {
-    var route = getCurrentRoute().group.name;
+    const route = getCurrentRoute().group.name;
     return upperCaseFirst(route);
   },
   current_route_path() {

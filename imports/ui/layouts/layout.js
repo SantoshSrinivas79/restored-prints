@@ -18,7 +18,7 @@ Template.registerHelper('truncate', function(stringToShorten, maxCharsAmount){
 });
 
 Template.layout.onCreated(function() {
-  var self = this;
+  const self = this;
   self.autorun(() => {
     self.subscribe('categories');
   })

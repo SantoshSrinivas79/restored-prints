@@ -2,7 +2,7 @@ import './list.html';
 import Artists from '../../../../../collections/artists/model';
 
 Template.admin_artists_list.onRendered(function() {
-  var self = this;
+  const self = this;
   self.autorun(() => {
     self.subscribe('artists');
   });

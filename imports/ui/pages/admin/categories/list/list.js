@@ -2,7 +2,7 @@ import './list.html';
 import Categories from '../../../../../collections/categories/model';
 
 Template.admin_categories_list.onRendered(function() {
-  var self = this;
+  const self = this;
   self.autorun(() => {
     self.subscribe('categories');
   });

@@ -1,8 +1,9 @@
-import './navbar.html';
-import './navbar.scss';
-
 import Categories from '../../../collections/categories/model';
 import Constants from '../../../common/constants';
+import FlowRouter from 'meteor/kadira:flow-router';
+
+import './navbar.html';
+import './navbar.scss';
 import './navbar.html';
 
 Template.navbar.onRendered(function() {
@@ -26,7 +27,7 @@ Template.navbar.helpers({
 Template.navbar.events({
   'submit #search_form'(event) {
     event.preventDefault();
-    var query = event.target.query.value;
+    const query = event.target.query.value;
     FlowRouter.go('/search/' + query);
   },
   'click #search_form .close'(event) {

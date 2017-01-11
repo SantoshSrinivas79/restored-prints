@@ -1,8 +1,10 @@
 import "./home.html";
 import Prints from '../../../collections/prints/model';
+import {Template} from 'meteor/templating';
+import FlowRouter from 'meteor/kadira:flow-router';
 
 Template.home.onCreated(function() {
-  var self = this;
+  const self = this;
   self.autorun(() => {
     self.subscribe('prints_home_page');
   })

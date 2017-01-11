@@ -2,6 +2,7 @@ import "./search.html";
 import "./search.scss"
 
 import { Template } from 'meteor/templating';
+import FlowRouter from 'meteor/kadira:flow-router';
 import Prints from '../../../collections/prints/model';
 import Publications from '../../../collections/publications/model';
 
@@ -9,29 +10,29 @@ const CHUNK_SIZE = 3;
 const PAGE_COUNT = 3;
 
 Template.search.onCreated(function() {
-  var self = this;
+  const self = this;
   self.autorun(() => {
-    var query = FlowRouter.getParam('query') || '';
-    var page = FlowRouter.getParam('page') || 0;
+    const query = FlowRouter.getParam('query') || '';
+    const page = FlowRouter.getParam('page') || 0;
 
     self.subscribe('print_search', {query: query, page: page, count: PAGE_COUNT});
     self.subscribe('publications');
   })
 });
 
-var chunkSearchResults = function(results) {
-  var chunks = [];
+function chunkSearchResults(results) {
+  let chunks = [];
   while (results.length > CHUNK_SIZE) {
     chunks.push({row: results.slice(0, CHUNK_SIZE)});
     results = results.slice(CHUNK_SIZE);
   }
   chunks.push({row: results});
   return chunks;
-};
+}
 
 Template.search.helpers({
   search_results() {
-    var prints = Prints.find({});
+    let prints = Prints.find({});
 
     return chunkSearchResults(prints);
   },
@@ -72,18 +73,18 @@ Template.search_print.helpers({
 
 Template.search_pagination.helpers({
   is_current_page(page) {
-    var current_page = FlowRouter.getParam('page') || 0;
+    const current_page = FlowRouter.getParam('page') || 0;
     return current_page == page;
   },
   enabled() {
-    var page_count = Math.ceil(Counts.get('print_search_count') / PAGE_COUNT);
+    const page_count = Math.ceil(Counts.get('print_search_count') / PAGE_COUNT);
     return page_count != 1;
   },
   pages() {
-    var output = [];
-    var page_count = Math.ceil(Counts.get('print_search_count') / PAGE_COUNT);
-    for(var i = 0; i < page_count; i++) {
-      var page = {page: i};
+    let output = [];
+    const page_count = Math.ceil(Counts.get('print_search_count') / PAGE_COUNT);
+    for(let i = 0; i < page_count; i++) {
+      let page = {page: i};
 
       if(i === 0) {
         page.path = FlowRouter.path('search', {query: FlowRouter.getParam('query')});
@@ -97,11 +98,11 @@ Template.search_pagination.helpers({
     return output;
   },
   previous_enabled() {
-    var current_page = FlowRouter.getParam('page') || 0;
+    const current_page = FlowRouter.getParam('page') || 0;
     return (current_page == 0) ? 'disabled' : ''
   },
   previous_path() {
-    var current_page = FlowRouter.getParam('page') || 0;
+    const current_page = FlowRouter.getParam('page') || 0;
     if(current_page == 0) {
       return '';
     }
@@ -109,11 +110,11 @@ Template.search_pagination.helpers({
     return FlowRouter.path('search', {query: FlowRouter.getParam('query'), page: current_page - 1})
   },
   next_enabled() {
-    var current_page = FlowRouter.getParam('page') || 0;
+    const current_page = FlowRouter.getParam('page') || 0;
     return (current_page == Math.ceil(Counts.get('print_search_count') / PAGE_COUNT) - 1) ? 'disabled' : ''
   },
   next_path() {
-    var current_page = FlowRouter.getParam('page') || 0;
+    const current_page = FlowRouter.getParam('page') || 0;
     if(current_page == (Math.ceil(Counts.get('print_search_count') / PAGE_COUNT) - 1)) {
       return '';
     }

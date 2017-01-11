@@ -2,7 +2,7 @@ import './edit.html';
 import Artists from '../../../../../collections/artists/model';
 
 Template.admin_artists_edit.onRendered(function() {
-  var self = this;
+  const self = this;
   self.autorun(() => {
     self.subscribe('artist_by_id', FlowRouter.getParam("id"));
 

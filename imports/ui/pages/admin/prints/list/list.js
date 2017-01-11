@@ -1,15 +1,16 @@
 import './list.html';
 import './list.scss';
+import { Meteor } from 'meteor/meteor'
 
 import Prints from '../../../../../collections/prints/model';
 import '../../../../components/breadcrumb/breadcrumb';
 
-var formatTimestamp = function(value) {
+function formatTimestamp(value) {
   return moment.unix(value).format('HH:mm - Do MMMM YYYY');
-};
+}
 
 Template.admin_prints_list.onRendered(function() {
-  var self = this;
+  const self = this;
   self.autorun(() => {
     self.subscribe('prints_admin');
     self.subscribe('publications');

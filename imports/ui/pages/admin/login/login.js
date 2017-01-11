@@ -9,9 +9,6 @@ Template.admin_login.events({
     const username = target.username.value;
     const password = target.password.value;
 
-    console.log(username);
-    console.log(password);
-
     Meteor.loginWithPassword(username, password, function(err) {
       if(err) {
         console.log(err);

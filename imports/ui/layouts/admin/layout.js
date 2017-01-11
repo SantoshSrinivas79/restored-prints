@@ -1,6 +1,8 @@
 import './layout.html';
 import './layout.scss';
 import '../../../ui/components/navbar/navbar';
+import FlowRouter from 'meteor/kadira:flow-router';
+import { Meteor } from 'meteor/meteor';
 
 Template.admin_layout.onRendered(function() {
   this.autorun(() => {
